@@ -1,23 +1,21 @@
 package com.example.anavai
 
 import android.animation.Animator
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import android.view.ViewAnimationUtils
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricManager
-import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.animation.doOnEnd
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var biometricManager: BiometricManager
-    lateinit var frontLayout: LinearLayout
-    lateinit var backLayout: LinearLayout
-    lateinit var parentLayout: ConstraintLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,38 +24,45 @@ class MainActivity : AppCompatActivity() {
         biometricManager = BiometricManager.from(this)
         checkBiometricStatus(biometricManager)
 
-        parentLayout = findViewById(R.id.main_fragment_container)
-        frontLayout = findViewById(R.id.front_rectangle)
-        backLayout = findViewById(R.id.back_rectangle)
-
-
-        frontLayout.setOnClickListener {
+        front_rectangle.setOnClickListener {
             startAnimation()
         }
     }
 
-    fun startAnimation(){
-        var rotateLeft: Animation = AnimationUtils.loadAnimation(this, R.anim.rotate_left)
-        var rotateRight: Animation = AnimationUtils.loadAnimation(this, R.anim.rotate_right)
+    private fun startAnimation() {
+        val rotateLeft: Animation = AnimationUtils.loadAnimation(this, R.anim.rotate_left)
+        val rotateRight: Animation = AnimationUtils.loadAnimation(this, R.anim.rotate_right)
 
-        val cx: Int = parentLayout.left + parentLayout.right
-        val cy: Int = parentLayout.top + parentLayout.bottom
+        val finalRadius: Float = Math.hypot((main_root.width).toDouble(), (main_root.height).toDouble()).toFloat()
 
-        var finalRadius: Int = Math.max(parentLayout.width, parentLayout.height)
+        val cx: Float = (front_rectangle.x + front_rectangle.width / 2)
+        val cy: Float = (front_rectangle.y  + front_rectangle.height / 2)
 
-        var expandAnimation: Animator = ViewAnimationUtils.createCircularReveal(frontLayout, cx, cy, 0f, finalRadius.toFloat())
-        frontLayout.startAnimation(rotateLeft)
-        backLayout.startAnimation(rotateRight)
+        val expandAnimation: Animator = ViewAnimationUtils.createCircularReveal(
+            cover_rectangle,
+            (cx).toInt(),
+            (cy).toInt(),
+            0f,
+            finalRadius
+        )
+
+        front_rectangle.startAnimation(rotateLeft)
+        back_rectangle.startAnimation(rotateRight)
         Handler().postDelayed({
+            cover_rectangle.visibility = View.VISIBLE
+            expandAnimation.duration = 800
             expandAnimation.start()
+            expandAnimation.doOnEnd {
+                startActivity(Intent(this@MainActivity, BasicActivity::class.java))
+            }
         }, 2000)
     }
 
-    fun checkBiometricStatus(biometricManager: BiometricManager){
-        when(biometricManager.canAuthenticate()){
-            BiometricManager.BIOMETRIC_SUCCESS->
+    private fun checkBiometricStatus(biometricManager: BiometricManager) {
+        when (biometricManager.canAuthenticate()) {
+            BiometricManager.BIOMETRIC_SUCCESS ->
                 System.out.println("Moze")
-            BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE->
+            BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE ->
                 System.out.println("Ne moze")
         }
     }
