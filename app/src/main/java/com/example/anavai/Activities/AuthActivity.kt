@@ -1,4 +1,4 @@
-package com.example.anavai
+package com.example.anavai.Activities
 
 import android.animation.Animator
 import android.content.Intent
@@ -11,15 +11,17 @@ import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricManager
 import androidx.core.animation.doOnEnd
-import kotlinx.android.synthetic.main.activity_main.*
+import com.example.anavai.R
+import kotlinx.android.synthetic.main.activity_auth.*
+import kotlin.math.hypot
 
-class MainActivity : AppCompatActivity() {
+class AuthActivity : AppCompatActivity() {
 
     lateinit var biometricManager: BiometricManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_auth)
 
         biometricManager = BiometricManager.from(this)
         checkBiometricStatus(biometricManager)
@@ -30,13 +32,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun startAnimation() {
-        val rotateLeft: Animation = AnimationUtils.loadAnimation(this, R.anim.rotate_left)
-        val rotateRight: Animation = AnimationUtils.loadAnimation(this, R.anim.rotate_right)
+        val rotateLeft: Animation = AnimationUtils.loadAnimation(this,
+            R.anim.rotate_left
+        )
+        val rotateRight: Animation = AnimationUtils.loadAnimation(this,
+            R.anim.rotate_right
+        )
 
-        val finalRadius: Float = Math.hypot((main_root.width).toDouble(), (main_root.height).toDouble()).toFloat()
+        val finalRadius: Float =
+            hypot((main_root.width).toDouble(), (main_root.height).toDouble()).toFloat()
 
         val cx: Float = (front_rectangle.x + front_rectangle.width / 2)
-        val cy: Float = (front_rectangle.y  + front_rectangle.height / 2)
+        val cy: Float = (front_rectangle.y + front_rectangle.height / 2)
 
         val expandAnimation: Animator = ViewAnimationUtils.createCircularReveal(
             cover_rectangle,
@@ -53,7 +60,7 @@ class MainActivity : AppCompatActivity() {
             expandAnimation.duration = 800
             expandAnimation.start()
             expandAnimation.doOnEnd {
-                startActivity(Intent(this@MainActivity, BasicActivity::class.java))
+                startActivity(Intent(this@AuthActivity, BaseActivity::class.java))
             }
         }, 2000)
     }
