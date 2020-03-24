@@ -7,4 +7,11 @@
     <color name="splashColor">#2B2B52</color>
     <color name="splash">#151528</color>
     <color name="white">#FFFFFF</color>
+
+    <color name="overlay_music">#808E2DE2</color>
+    <color name="overlay_movies">#80a8c0ff</color>
+    <color name="overlay_books">#80a8c0ff</color>
+    <color name="overlay_games">#80c31432</color>
+    <color name="overlay_series">#80800080</color>
+    <color name="overlay_anime">#807303c0</color>
 </resources>
