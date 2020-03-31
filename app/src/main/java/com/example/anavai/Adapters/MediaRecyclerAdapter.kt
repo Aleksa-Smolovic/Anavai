@@ -45,7 +45,7 @@ class MediaRecyclerAdapter(val mediaList: ArrayList<Media>, val context: Context
                 (context as AppCompatActivity).supportFragmentManager
             val fragmentTransaction = manager.beginTransaction()
             fragmentTransaction.replace(R.id.base_fragment_container, SingleMediaFragment())
-            fragmentTransaction.addSharedElement(holder.image, holder.image.transitionName)
+//            fragmentTransaction.addSharedElement(holder.image, holder.image.transitionName)
             fragmentTransaction.commit()
         }
     }

@@ -1,8 +1,7 @@
 package com.example.anavai.Fragments
 
-import android.annotation.SuppressLint
-import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +10,8 @@ import androidx.transition.TransitionInflater
 import com.example.anavai.R
 
 class SingleMediaFragment : Fragment() {
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,12 +23,14 @@ class SingleMediaFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            sharedElementEnterTransition = TransitionInflater
-                .from(context).inflateTransition(
-                    android.R.transition.move // you can change this
-                )
-        }
+//        Handler().postDelayed({
+//            sharedElementEnterTransition = TransitionInflater
+//                    .from(context).inflateTransition(
+//                            android.R.transition.move
+//                    )
+//        },2500)
+
+
     }
 
 

@@ -33,24 +33,24 @@ class AuthActivity : AppCompatActivity() {
 
     private fun startAnimation() {
         val rotateLeft: Animation = AnimationUtils.loadAnimation(this,
-            R.anim.rotate_left
+                R.anim.rotate_left
         )
         val rotateRight: Animation = AnimationUtils.loadAnimation(this,
-            R.anim.rotate_right
+                R.anim.rotate_right
         )
 
         val finalRadius: Float =
-            hypot((main_root.width).toDouble(), (main_root.height).toDouble()).toFloat()
+                hypot((main_root.width).toDouble(), (main_root.height).toDouble()).toFloat()
 
         val cx: Float = (front_rectangle.x + front_rectangle.width / 2)
         val cy: Float = (front_rectangle.y + front_rectangle.height / 2)
 
         val expandAnimation: Animator = ViewAnimationUtils.createCircularReveal(
-            cover_rectangle,
-            (cx).toInt(),
-            (cy).toInt(),
-            0f,
-            finalRadius
+                cover_rectangle,
+                (cx).toInt(),
+                (cy).toInt(),
+                0f,
+                finalRadius
         )
 
         front_rectangle.startAnimation(rotateLeft)
