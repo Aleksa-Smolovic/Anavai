@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import com.example.anavai.Fragments.MenuFragment
 import com.example.anavai.Fragments.ProfileFragment
 import com.example.anavai.Fragments.ShareFragment
+import com.example.anavai.Fragments.SingleMediaFragment
 import com.example.anavai.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_base.*
@@ -26,7 +27,7 @@ class BaseActivity : AppCompatActivity() {
             removeCover()
         }, 500)
 
-        replaceFragment(MenuFragment())
+        replaceFragment(SingleMediaFragment())
         bottom_navigation_view.setOnNavigationItemSelectedListener(bottomNavigationListener)
     }
 

@@ -19,7 +19,7 @@ import com.example.anavai.R
 import kotlinx.android.synthetic.main.recycler_item_media.view.*
 
 
-class MediaRecyclerAdapter(val mediaList: ArrayList<Media>, val context: Context) : RecyclerView.Adapter<MediaRecyclerAdapter.ViewHolder>(){
+class MediaRecyclerAdapter(private val mediaList: ArrayList<Media>, private val context: Context) : RecyclerView.Adapter<MediaRecyclerAdapter.ViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.recycler_item_media, parent, false)

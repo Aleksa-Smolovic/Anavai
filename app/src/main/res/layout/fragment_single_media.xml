@@ -15,16 +15,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:contentScrim="@color/colorPrimary"
+            app:title=""
+            android:id="@+id/collapsing_toolbar_layout"
             app:collapsedTitleGravity="center"
             app:expandedTitleGravity="center"
-            app:layout_scrollFlags="scroll|snap|snapMargins"
-            app:title="Single media">
+            app:layout_scrollFlags="scroll|snap|snapMargins">
 
-            <ImageView
+            <androidx.viewpager2.widget.ViewPager2
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/pattern" />
+                android:layoutDirection="rtl"
+                android:id="@+id/media_pager"/>
 
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
