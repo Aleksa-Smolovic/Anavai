@@ -5,10 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
+import com.example.anavai.Adapters.MediaInstanceRecyclerAdapter
 import com.example.anavai.Adapters.MediaViewpagerAdapter
 import com.example.anavai.Models.Media
+import com.example.anavai.Models.MediaInstance
 import com.example.anavai.R
 import com.google.android.material.appbar.CollapsingToolbarLayout
 
@@ -71,10 +75,30 @@ class SingleMediaFragment : Fragment() {
             )
         )
 
+        val mediaInstanceList = ArrayList<MediaInstance>()
+        for (i in 0..10){
+            mediaInstanceList.add(
+                MediaInstance(
+                    "Rick and Morty",
+                    1,
+                    "https://images4.alphacoders.com/102/thumb-1920-1028306.png",
+                    "https://images4.alphacoders.com/102/thumb-1920-1028306.png"
+                )
+            )
+        }
+
         val mediaPager = rootView.findViewById(R.id.media_pager) as ViewPager2
         mediaPager.adapter = MediaViewpagerAdapter(mediaList, requireContext())
 
-        val collapsingToolbarLayout = rootView.findViewById(R.id.collapsing_toolbar_layout) as CollapsingToolbarLayout
+        val mediaInstanceRecycler =
+            rootView.findViewById<RecyclerView>(R.id.media_instance_recycler)
+        mediaInstanceRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        mediaInstanceRecycler.adapter = MediaInstanceRecyclerAdapter(mediaInstanceList, requireContext())
+
+        mediaInstanceRecycler.setBackgroundColor(resources.getColor(R.color.overlay_anime))
+
+        val collapsingToolbarLayout =
+            rootView.findViewById(R.id.collapsing_toolbar_layout) as CollapsingToolbarLayout
 
         mediaPager.registerOnPageChangeCallback(object : OnPageChangeCallback() {
             override fun onPageScrolled(
@@ -107,7 +131,6 @@ class SingleMediaFragment : Fragment() {
 //                            android.R.transition.move
 //                    )
 //        },2500)
-
 
     }
 

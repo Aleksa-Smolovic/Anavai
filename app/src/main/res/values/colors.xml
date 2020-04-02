@@ -14,4 +14,6 @@
     <color name="overlay_games">#80c31432</color>
     <color name="overlay_series">#80800080</color>
     <color name="overlay_anime">#807303c0</color>
+
+    <color name="black">#000000</color>
 </resources>

@@ -12,20 +12,20 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:contentScrim="@color/colorPrimary"
-            app:title=""
-            android:id="@+id/collapsing_toolbar_layout"
             app:collapsedTitleGravity="center"
+            app:contentScrim="@color/colorPrimary"
             app:expandedTitleGravity="center"
-            app:layout_scrollFlags="scroll|snap|snapMargins">
+            app:layout_scrollFlags="scroll|snap|enterAlwaysCollapsed"
+            app:title="">
 
             <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/media_pager"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:layoutDirection="rtl"
-                android:id="@+id/media_pager"/>
+                android:layoutDirection="rtl" />
 
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
@@ -36,24 +36,14 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/media_instance_recycler"
         android:layout_width="match_parent"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layoutAnimation="@anim/recycler_animation"
+        android:padding="5dp"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="20dp"
-            android:text="@string/text_placeholder"
-            android:textColor="@color/cardview_dark_background"
-            android:textSize="22dp" />
-
-    </androidx.core.widget.NestedScrollView>
-
-    <!--    <androidx.viewpager.widget.ViewPager-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="250dp"-->
-    <!--        android:id="@+id/media_viewpager"/>-->
+    <!--    </androidx.core.widget.NestedScrollView>-->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
