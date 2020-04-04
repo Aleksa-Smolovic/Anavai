@@ -1,29 +1,43 @@
-package com.example.anavai.Activities
+package com.example.anavai.Fragments
 
 import android.animation.Animator
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewAnimationUtils
+import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricManager
 import androidx.core.animation.doOnEnd
+import androidx.navigation.fragment.findNavController
+import com.example.anavai.Activities.BaseActivity
+
 import com.example.anavai.R
-import kotlinx.android.synthetic.main.activity_auth.*
+import kotlinx.android.synthetic.main.fragment_auth.*
 import kotlin.math.hypot
 
-class AuthActivity : AppCompatActivity() {
+/**
+ * A simple [Fragment] subclass.
+ */
+class AuthFragment : Fragment() {
 
     lateinit var biometricManager: BiometricManager
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_auth)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_auth, container, false)
+    }
 
-        biometricManager = BiometricManager.from(this)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        biometricManager = BiometricManager.from(view.context)
         checkBiometricStatus(biometricManager)
 
         front_rectangle.setOnClickListener {
@@ -32,25 +46,25 @@ class AuthActivity : AppCompatActivity() {
     }
 
     private fun startAnimation() {
-        val rotateLeft: Animation = AnimationUtils.loadAnimation(this,
-                R.anim.rotate_left
+        val rotateLeft: Animation = AnimationUtils.loadAnimation(context,
+            R.anim.rotate_left
         )
-        val rotateRight: Animation = AnimationUtils.loadAnimation(this,
-                R.anim.rotate_right
+        val rotateRight: Animation = AnimationUtils.loadAnimation(context,
+            R.anim.rotate_right
         )
 
         val finalRadius: Float =
-                hypot((main_root.width).toDouble(), (main_root.height).toDouble()).toFloat()
+            hypot((main_root.width).toDouble(), (main_root.height).toDouble()).toFloat()
 
         val cx: Float = (front_rectangle.x + front_rectangle.width / 2)
         val cy: Float = (front_rectangle.y + front_rectangle.height / 2)
 
         val expandAnimation: Animator = ViewAnimationUtils.createCircularReveal(
-                cover_rectangle,
-                (cx).toInt(),
-                (cy).toInt(),
-                0f,
-                finalRadius
+            cover_rectangle,
+            (cx).toInt(),
+            (cy).toInt(),
+            0f,
+            finalRadius
         )
 
         front_rectangle.startAnimation(rotateLeft)
@@ -60,7 +74,7 @@ class AuthActivity : AppCompatActivity() {
             expandAnimation.duration = 800
             expandAnimation.start()
             expandAnimation.doOnEnd {
-                startActivity(Intent(this@AuthActivity, BaseActivity::class.java))
+                findNavController().navigate(R.id.navigate_Auth_to_Menu)
             }
         }, 2000)
     }

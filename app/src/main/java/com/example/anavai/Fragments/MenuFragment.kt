@@ -1,15 +1,22 @@
 package com.example.anavai.Fragments
 
+import android.animation.Animator
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewAnimationUtils
 import android.view.ViewGroup
+import androidx.core.animation.doOnEnd
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.anavai.Adapters.MediaRecyclerAdapter
 import com.example.anavai.Models.Media
 import com.example.anavai.R
+import kotlinx.android.synthetic.main.activity_base.*
+import kotlinx.android.synthetic.main.fragment_menu.*
+import kotlin.math.hypot
 
 class MenuFragment : Fragment() {
 
@@ -19,6 +26,9 @@ class MenuFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_menu, container, false)
+
+
+
         val mediaList = ArrayList<Media>()
         mediaList.add(
                 Media(
@@ -76,5 +86,33 @@ class MenuFragment : Fragment() {
         return rootView
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        Handler().postDelayed({
+            removeCover()
+        }, 500)
+    }
+
+    private fun removeCover() {
+        val startRadius: Float =
+            hypot((basic_cover.width).toDouble(), (basic_cover.height).toDouble()).toFloat()
+
+        val cx: Float = (basic_cover.x + basic_cover.width / 2)
+        val cy: Float = (basic_cover.y + basic_cover.height / 2)
+
+        val expandAnimation: Animator = ViewAnimationUtils.createCircularReveal(
+            basic_cover,
+            (cx).toInt(),
+            (cy).toInt(),
+            startRadius,
+            0f
+        )
+
+        expandAnimation.duration = 800
+        expandAnimation.start()
+        expandAnimation.doOnEnd {
+            basic_cover.visibility = View.GONE
+        }
+    }
 
 }

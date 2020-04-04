@@ -36,7 +36,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-
     <LinearLayout
         android:id="@+id/front_rectangle"
         android:layout_width="120dp"
@@ -54,30 +53,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:paddingLeft="50dp"
-        android:paddingRight="50dp"
-        android:textColor="@color/white"
-        android:text="Placeholder"
         android:background="@drawable/edit_text_pill"
+        android:paddingLeft="50dp"
+        android:paddingTop="8dp"
+        android:paddingRight="50dp"
+        android:paddingBottom="8dp"
+        android:text="Placeholder"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@id/password"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
     <EditText
         android:id="@+id/password"
-        android:inputType="textPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:paddingLeft="65dp"
-        android:paddingRight="65dp"
-        android:textColor="@color/white"
-        android:text="Placeholder"
         android:background="@drawable/edit_text_pill"
+        android:inputType="textPassword"
+        android:paddingLeft="65dp"
+        android:paddingTop="8dp"
+        android:paddingRight="65dp"
+        android:paddingBottom="8dp"
+        android:text="Placeholder"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@id/log_in_btn"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
@@ -95,11 +94,11 @@
         app:layout_constraintRight_toRightOf="parent" />
 
     <LinearLayout
-        android:elevation="5dp"
         android:id="@+id/cover_rectangle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/splashColor"
+        android:elevation="5dp"
         android:orientation="vertical"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@id/front_rectangle"
