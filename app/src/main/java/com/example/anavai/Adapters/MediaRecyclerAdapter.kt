@@ -1,19 +1,24 @@
 package com.example.anavai.Adapters
 
 import android.content.Context
+import android.os.Bundle
+import android.provider.Contacts.SettingsColumns.KEY
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.FragmentManager
+import androidx.core.view.ViewCompat
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.FragmentNavigator
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.anavai.Fragments.SingleMediaFragment
 import com.example.anavai.Models.Media
 import com.example.anavai.R
 import kotlinx.android.synthetic.main.recycler_item_media.view.*
@@ -39,22 +44,25 @@ class MediaRecyclerAdapter(private val mediaList: ArrayList<Media>, private val 
             .into(holder.image)
 
         holder.overlay.setBackgroundColor(ContextCompat.getColor(context, media.overlayColor))
+        ViewCompat.setTransitionName(holder.image, "Test_$position")
 
-//        holder.container.setOnClickListener {
-//            val manager: FragmentManager =
-//                (context as AppCompatActivity).supportFragmentManager
-//            val fragmentTransaction = manager.beginTransaction()
-//            fragmentTransaction.replace(R.id.base_fragment_container, SingleMediaFragment())
-//            fragmentTransaction.addSharedElement(holder.image, holder.image.transitionName)
-//            fragmentTransaction.commit()
-//        }
+        holder.container.setOnClickListener{
+            val bundle = Bundle().apply {
+                putInt("position", position)
+            }
+            val extras = FragmentNavigator.Extras.Builder()
+                .addSharedElement(holder.image, ViewCompat.getTransitionName(holder.image)!!)
+                .build()
+            it.findNavController().navigate(R.id.navigate_Menu_to_SingleMedia)
+        }
+
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val name = itemView.findViewById(R.id.media_name) as TextView
         val image = itemView.findViewById(R.id.media_image) as ImageView
         val overlay = itemView.findViewById(R.id.media_overlay) as LinearLayout
-        val container: CardView = itemView.media_item_container 
+        val container: CardView = itemView.media_item_container
     }
 
 }

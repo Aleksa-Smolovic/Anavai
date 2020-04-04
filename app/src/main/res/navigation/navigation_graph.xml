@@ -6,7 +6,11 @@
     <fragment
         android:id="@+id/menuFragment"
         android:name="com.example.anavai.Fragments.MenuFragment"
-        android:label="MenuFragment" />
+        android:label="MenuFragment" >
+        <action
+            android:id="@+id/navigate_Menu_to_SingleMedia"
+            app:destination="@id/singleMediaFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.anavai.Fragments.ProfileFragment"
@@ -15,4 +19,8 @@
         android:id="@+id/shareFragment"
         android:name="com.example.anavai.Fragments.ShareFragment"
         android:label="ShareFragment" />
+    <fragment
+        android:id="@+id/singleMediaFragment"
+        android:name="com.example.anavai.Fragments.SingleMediaFragment"
+        android:label="SingleMediaFragment" />
 </navigation>

@@ -4,17 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/pager_media_image"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop" />
+    <ImageView
+        android:id="@+id/pager_media_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"/>
 
-        <LinearLayout
-            android:id="@+id/pager_media_overlay"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" />
+    <LinearLayout
+        android:id="@+id/pager_media_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
