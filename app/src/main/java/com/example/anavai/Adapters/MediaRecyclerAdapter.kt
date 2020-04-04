@@ -40,14 +40,14 @@ class MediaRecyclerAdapter(private val mediaList: ArrayList<Media>, private val 
 
         holder.overlay.setBackgroundColor(ContextCompat.getColor(context, media.overlayColor))
 
-        holder.container.setOnClickListener {
-            val manager: FragmentManager =
-                (context as AppCompatActivity).supportFragmentManager
-            val fragmentTransaction = manager.beginTransaction()
-            fragmentTransaction.replace(R.id.base_fragment_container, SingleMediaFragment())
+//        holder.container.setOnClickListener {
+//            val manager: FragmentManager =
+//                (context as AppCompatActivity).supportFragmentManager
+//            val fragmentTransaction = manager.beginTransaction()
+//            fragmentTransaction.replace(R.id.base_fragment_container, SingleMediaFragment())
 //            fragmentTransaction.addSharedElement(holder.image, holder.image.transitionName)
-            fragmentTransaction.commit()
-        }
+//            fragmentTransaction.commit()
+//        }
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){

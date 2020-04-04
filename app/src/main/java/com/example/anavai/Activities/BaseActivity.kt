@@ -8,6 +8,9 @@ import android.view.View
 import android.view.ViewAnimationUtils
 import androidx.core.animation.doOnEnd
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.example.anavai.Fragments.MenuFragment
 import com.example.anavai.Fragments.ProfileFragment
 import com.example.anavai.Fragments.ShareFragment
@@ -27,8 +30,8 @@ class BaseActivity : AppCompatActivity() {
             removeCover()
         }, 500)
 
-        replaceFragment(SingleMediaFragment())
-        bottom_navigation_view.setOnNavigationItemSelectedListener(bottomNavigationListener)
+        val navController:NavController = findNavController(R.id.nav_host_fragment_container)
+        bottom_navigation_view.setupWithNavController(navController)
     }
 
     private fun removeCover() {
@@ -53,28 +56,24 @@ class BaseActivity : AppCompatActivity() {
         }
     }
 
-    private val bottomNavigationListener =
-        BottomNavigationView.OnNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.menu -> {
-                    replaceFragment(MenuFragment())
-                    return@OnNavigationItemSelectedListener true
-                }
-                R.id.share -> {
-                    replaceFragment(ShareFragment())
-                    return@OnNavigationItemSelectedListener true
-                }
-                R.id.profile -> {
-                    replaceFragment(ProfileFragment())
-                    return@OnNavigationItemSelectedListener true
-                }
-            }
-            false
-        }
+//    private val bottomNavigationListener =
+//        BottomNavigationView.OnNavigationItemSelectedListener { item ->
+//            when (item.itemId) {
+//                R.id.menuFragment -> {
+//                    replaceFragment(MenuFragment())
+//                    return@OnNavigationItemSelectedListener true
+//                }
+//                R.id.shareFragment -> {
+//                    replaceFragment(ShareFragment())
+//                    return@OnNavigationItemSelectedListener true
+//                }
+//                R.id.profileFragment -> {
+//                    replaceFragment(ProfileFragment())
+//                    return@OnNavigationItemSelectedListener true
+//                }
+//            }
+//            false
+//        }
 
-    private fun replaceFragment(fragment: Fragment){
-        val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.base_fragment_container, fragment)
-        fragmentTransaction.commit()
-    }
+
 }
