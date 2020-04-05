@@ -46,7 +46,8 @@ class MediaInstanceRecyclerAdapter(
             .into(holder.image)
 
         holder.container.setOnClickListener {
-            it.findNavController().navigate(R.id.navigate_singleMedia_to_MusicMedia)
+//            it.findNavController().navigate(R.id.navigate_singleMedia_to_MusicMedia)
+            it.findNavController().navigate(R.id.navigate_SingleMedia_to_TextMedia)
         }
 
     }

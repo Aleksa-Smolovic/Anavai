@@ -28,6 +28,9 @@
         <action
             android:id="@+id/navigate_singleMedia_to_MusicMedia"
             app:destination="@id/musicMediaFragment" />
+        <action
+            android:id="@+id/navigate_SingleMedia_to_TextMedia"
+            app:destination="@id/textMediaFragment" />
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
@@ -54,4 +57,9 @@
         android:name="com.example.anavai.Fragments.MusicMediaFragment"
         android:label="fragment_music_media"
         tools:layout="@layout/fragment_music_media" />
+    <fragment
+        android:id="@+id/textMediaFragment"
+        android:name="com.example.anavai.Fragments.TextMediaFragment"
+        android:label="fragment_text_media"
+        tools:layout="@layout/fragment_text_media" />
 </navigation>
