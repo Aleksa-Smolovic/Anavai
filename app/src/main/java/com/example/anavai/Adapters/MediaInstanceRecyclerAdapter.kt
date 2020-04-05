@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentManager
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.anavai.Fragments.SingleMediaFragment
@@ -43,6 +44,10 @@ class MediaInstanceRecyclerAdapter(
         Glide.with(context)
             .load(mediaInstance.imageUrl)
             .into(holder.image)
+
+        holder.container.setOnClickListener {
+            it.findNavController().navigate(R.id.navigate_singleMedia_to_MusicMedia)
+        }
 
     }
 

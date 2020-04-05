@@ -16,4 +16,5 @@
     <color name="overlay_anime">#807303c0</color>
 
     <color name="black">#000000</color>
+    <color name="mild_black">#80000000</color>
 </resources>

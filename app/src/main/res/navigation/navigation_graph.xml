@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation_graph"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
     app:startDestination="@id/splashFragment">
 
     <fragment
@@ -22,7 +24,11 @@
     <fragment
         android:id="@+id/singleMediaFragment"
         android:name="com.example.anavai.Fragments.SingleMediaFragment"
-        android:label="SingleMediaFragment" />
+        android:label="SingleMediaFragment" >
+        <action
+            android:id="@+id/navigate_singleMedia_to_MusicMedia"
+            app:destination="@id/musicMediaFragment" />
+    </fragment>
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.example.anavai.Fragments.SplashFragment"
@@ -43,4 +49,9 @@
             app:popUpTo="@id/navigation_graph"
             app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/musicMediaFragment"
+        android:name="com.example.anavai.Fragments.MusicMediaFragment"
+        android:label="fragment_music_media"
+        tools:layout="@layout/fragment_music_media" />
 </navigation>
