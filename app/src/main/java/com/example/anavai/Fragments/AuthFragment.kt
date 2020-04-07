@@ -1,10 +1,8 @@
 package com.example.anavai.Fragments
 
 import android.animation.Animator
-import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewAnimationUtils
@@ -13,9 +11,9 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import androidx.biometric.BiometricManager
 import androidx.core.animation.doOnEnd
+import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import com.example.anavai.Activities.BaseActivity
-
 import com.example.anavai.R
 import kotlinx.android.synthetic.main.fragment_auth.*
 import kotlin.math.hypot
@@ -40,8 +38,12 @@ class AuthFragment : Fragment() {
         biometricManager = BiometricManager.from(view.context)
         checkBiometricStatus(biometricManager)
 
-        front_rectangle.setOnClickListener {
+        log_in_btn.setOnClickListener {
             startAnimation()
+        }
+
+        no_acc.setOnClickListener{
+            it.findNavController().navigate(R.id.navigate_Auth_to_Register)
         }
     }
 

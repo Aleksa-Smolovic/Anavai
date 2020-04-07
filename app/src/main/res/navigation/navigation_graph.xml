@@ -51,6 +51,9 @@
             app:destination="@id/menuFragment"
             app:popUpTo="@id/navigation_graph"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/navigate_Auth_to_Register"
+            app:destination="@id/registerFragment" />
     </fragment>
     <fragment
         android:id="@+id/musicMediaFragment"
@@ -62,4 +65,13 @@
         android:name="com.example.anavai.Fragments.TextMediaFragment"
         android:label="fragment_text_media"
         tools:layout="@layout/fragment_text_media" />
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.anavai.Fragments.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/navigater_Register_to_Menu"
+            app:destination="@id/menuFragment" />
+    </fragment>
 </navigation>

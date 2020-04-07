@@ -96,6 +96,19 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/waiting_for_the_sunrise"
+        android:text="@string/no_acc"
+        android:textColor="@color/no_acc"
+        android:textSize="17sp"
+        android:id="@+id/no_acc"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/log_in_btn" />
+
     <LinearLayout
         android:id="@+id/cover_rectangle"
         android:layout_width="match_parent"

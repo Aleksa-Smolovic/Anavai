@@ -17,4 +17,7 @@
 
     <color name="black">#000000</color>
     <color name="mild_black">#80000000</color>
+    <color name="turquoise">#40E0D0</color>
+    <color name="turquoise_header">#2c9c91</color>
+    <color name="no_acc">#ffb5c5</color>
 </resources>

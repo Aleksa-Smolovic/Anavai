@@ -10,8 +10,8 @@
         android:id="@+id/details_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:src="@drawable/vertical_wallpaper"
         android:scaleType="centerCrop"
-        android:src="@drawable/verticalplaceholder"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,9 +26,9 @@
         android:paddingTop="10dp"
         android:paddingRight="20dp"
         android:paddingBottom="10dp"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:layout_width="wrap_content"
@@ -40,17 +40,31 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/tab_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/text_header">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/text_media_tab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/turquoise" />
+
+    </LinearLayout>
+
     <ScrollView
         android:id="@+id/text_holder"
         android:layout_width="match_parent"
         android:layout_height="1000dp"
+        android:background="@color/turquoise"
         android:orientation="vertical"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
-        android:background="@color/white"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_header">
+        app:layout_constraintTop_toBottomOf="@id/tab_header">
 
         <TextView
             android:id="@+id/details_text"

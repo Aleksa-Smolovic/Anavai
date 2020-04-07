@@ -26,9 +26,6 @@ class MenuFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_menu, container, false)
-
-
-
         val mediaList = ArrayList<Media>()
         mediaList.add(
                 Media(
