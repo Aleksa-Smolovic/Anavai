@@ -29,4 +29,7 @@
     <string name="date">20/05/2020</string>
     <string name="comment_rating">12 2102 ratings</string>
     <string name="search">Search</string>
+    <string name="comment_placeholder">Wow... this is nice</string>
+    <string name="submit">Submit</string>
+    <string name="write_a_comment">Write a comment</string>
 </resources>

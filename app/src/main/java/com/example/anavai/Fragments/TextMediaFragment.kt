@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.anavai.Adapters.CommentRecyclerAdapter
 import com.example.anavai.Models.Comment
 import com.example.anavai.R
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import kotlinx.android.synthetic.main.fragment_text_media.*
@@ -42,6 +43,14 @@ class TextMediaFragment : Fragment() {
                     "https://images4.alphacoders.com/102/thumb-1920-1028306.png"
                 )
             )
+        }
+
+        val bottomSheetDialog = BottomSheetDialog(view.context)
+        val bottomView = layoutInflater.inflate(R.layout.bottom_sheet_add_comment, null)
+        bottomSheetDialog.setContentView(bottomView)
+
+        add_comment_btn.setOnClickListener {
+                bottomSheetDialog.show()
         }
 
         val commentRecycler = view.findViewById(R.id.comment_recycler) as RecyclerView

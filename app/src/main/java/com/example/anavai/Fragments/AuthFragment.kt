@@ -39,6 +39,7 @@ class AuthFragment : Fragment() {
         checkBiometricStatus(biometricManager)
 
         log_in_btn.setOnClickListener {
+            log_in_btn.isEnabled = false
             startAnimation()
         }
 
