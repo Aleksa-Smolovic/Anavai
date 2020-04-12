@@ -23,4 +23,10 @@
     <string name="email">Email:</string>
     <string name="password">Password:</string>
     <string name="register">Register</string>
+    <string name="song">My Frequency feat. RebMoe</string>
+    <string name="artist">Tiesto and 7 Skies</string>
+    <string name="rating">Your rating</string>
+    <string name="date">20/05/2020</string>
+    <string name="comment_rating">12 2102 ratings</string>
+    <string name="search">Search</string>
 </resources>

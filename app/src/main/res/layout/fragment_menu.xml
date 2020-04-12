@@ -8,9 +8,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/media_recycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="10dp"
-        android:layout_marginBottom="80dp"/>
+        android:layout_height="match_parent"/>
 
     <LinearLayout
         android:id="@+id/basic_cover"
