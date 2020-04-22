@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.anavai.Adapters.CommentRecyclerAdapter
-import com.example.anavai.Models.Comment
+import com.example.anavai.models.Comment
 import com.example.anavai.R
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.tabs.TabLayout

@@ -1,24 +1,15 @@
 package com.example.anavai.Adapters
 
 import android.content.Context
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
-import androidx.cardview.widget.CardView
-import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.FragmentNavigator
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.example.anavai.Models.Comment
+import com.example.anavai.models.Comment
 import com.example.anavai.R
-import kotlinx.android.synthetic.main.recycler_item_media.view.*
 
 
 class CommentRecyclerAdapter(private val commentList: ArrayList<Comment>, private val context: Context) : RecyclerView.Adapter<CommentRecyclerAdapter.ViewHolder>(){

@@ -1,7 +1,7 @@
 package com.example.anavai.Repositories
 
 import androidx.lifecycle.MutableLiveData
-import com.example.anavai.Models.Media
+import com.example.anavai.models.Media
 import com.example.anavai.R
 
 object MediaRepository {

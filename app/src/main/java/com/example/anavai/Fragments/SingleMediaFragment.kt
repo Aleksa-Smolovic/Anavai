@@ -4,27 +4,26 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.transition.TransitionInflater
 import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
-import com.bumptech.glide.Glide
 import com.example.anavai.Adapters.MediaInstanceRecyclerAdapter
 import com.example.anavai.Adapters.MediaViewpagerAdapter
-import com.example.anavai.Models.Media
-import com.example.anavai.Models.MediaInstance
+import com.example.anavai.models.Media
 import com.example.anavai.R
+import com.example.anavai.ViewModels.MediaInstanceViewModel
+import com.example.anavai.ViewModels.MediaViewModel
 import com.google.android.material.appbar.CollapsingToolbarLayout
-import kotlinx.android.synthetic.main.fragment_single_media.*
-import kotlinx.android.synthetic.main.fragment_single_media.view.*
-import kotlinx.android.synthetic.main.recycler_item_media.*
 
 
 class SingleMediaFragment : Fragment() {
+
+    private lateinit var mediaPager: ViewPager2
+    private lateinit var collapsingToolbarLayout: CollapsingToolbarLayout
+    private lateinit var mediaInstanceRecycler: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,81 +31,24 @@ class SingleMediaFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_single_media, container, false)
-        val mediaList = ArrayList<Media>()
-        mediaList.add(
-            Media(
-                "Music",
-                1,
-                "http://4.bp.blogspot.com/_2UbsSBz9ckE/S5wy4wwOgJI/AAAAAAAAA8M/3kHzTarHkf0/s1600/beatsByTURNRed.png",
-                R.color.overlay_music
-            )
-        )
-        mediaList.add(
-            Media(
-                "Movies",
-                2,
-                "https://www.tokkoro.com/picsup/2860911-batman-batman-begins-the-dark-knight-the-dark-knight-rises-movies___movie-wallpapers.jpg",
-                R.color.overlay_movies
-            )
-        )
-        mediaList.add(
-            Media(
-                "Books",
-                3,
-                "https://www.wallpaperflare.com/static/512/909/111/book-old-vintage-chipped-wallpaper.jpg",
-                R.color.overlay_books
-            )
-        )
-        mediaList.add(
-            Media(
-                "Games",
-                4,
-                "https://wallpapercave.com/wp/wp1870469.jpg",
-                R.color.overlay_games
-            )
-        )
-        mediaList.add(
-            Media(
-                "Series",
-                5,
-                "http://2.bp.blogspot.com/-rYr479JwWpQ/TuCwjmzlp0I/AAAAAAAAEjM/tLo_gBSnTrE/s1600/sherlock2.jpg",
-                R.color.overlay_series
-            )
-        )
-        mediaList.add(
-            Media(
-                "Anime",
-                6,
-                "https://images4.alphacoders.com/102/thumb-1920-1028306.png",
-                R.color.overlay_anime
-            )
-        )
 
-        val mediaInstanceList = ArrayList<MediaInstance>()
-        for (i in 0..10){
-            mediaInstanceList.add(
-                MediaInstance(
-                    "Rick and Morty",
-                    1,
-                    "https://images4.alphacoders.com/102/thumb-1920-1028306.png",
-                    "https://images4.alphacoders.com/102/thumb-1920-1028306.png"
-                )
-            )
-        }
-
-        val mediaPager = rootView.findViewById(R.id.media_pager) as ViewPager2
-        mediaPager.adapter = MediaViewpagerAdapter(mediaList, requireContext())
-
-        val mediaInstanceRecycler =
-            rootView.findViewById<RecyclerView>(R.id.media_instance_recycler)
-        mediaInstanceRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-        mediaInstanceRecycler.adapter = MediaInstanceRecyclerAdapter(mediaInstanceList, requireContext())
-
-        mediaInstanceRecycler.setBackgroundColor(resources.getColor(R.color.overlay_anime))
-
-        val collapsingToolbarLayout =
+        mediaPager = rootView.findViewById(R.id.media_pager) as ViewPager2
+        mediaInstanceRecycler =
+            rootView.findViewById(R.id.media_instance_recycler)
+        collapsingToolbarLayout =
             rootView.findViewById(R.id.collapsing_toolbar_layout) as CollapsingToolbarLayout
 
+        initViewpager()
+        initRecycler()
+
+        return rootView
+    }
+
+
+    private fun initViewpager() {
+        val mediaViewModel = ViewModelProvider(this).get(MediaViewModel::class.java)
+        val mediaList:List<Media> = mediaViewModel.getMediaList().value!!
+        mediaPager.adapter = MediaViewpagerAdapter(mediaList, requireContext())
         mediaPager.registerOnPageChangeCallback(object : OnPageChangeCallback() {
             override fun onPageScrolled(
                 position: Int,
@@ -125,10 +67,16 @@ class SingleMediaFragment : Fragment() {
                 super.onPageScrollStateChanged(state)
             }
         })
-
-        return rootView
     }
 
+    private fun initRecycler(){
+        val mediaInstanceModel = ViewModelProvider(this).get(MediaInstanceViewModel::class.java)
+        mediaInstanceRecycler.layoutManager =
+            LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        mediaInstanceRecycler.adapter =
+            MediaInstanceRecyclerAdapter(mediaInstanceModel.getMediaInstanceList().value!!, requireContext())
+        mediaInstanceRecycler.setBackgroundColor(resources.getColor(R.color.overlay_anime))
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

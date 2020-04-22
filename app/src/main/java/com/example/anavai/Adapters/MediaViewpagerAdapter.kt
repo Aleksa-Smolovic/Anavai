@@ -6,14 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.anavai.Models.Media
+import com.example.anavai.models.Media
 import com.example.anavai.R
 
-class MediaViewpagerAdapter(private val mediaList: ArrayList<Media>, private val context: Context): RecyclerView.Adapter<MediaViewpagerAdapter.ViewHolder>() {
+class MediaViewpagerAdapter(private val mediaList: List<Media>, private val context: Context): RecyclerView.Adapter<MediaViewpagerAdapter.ViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

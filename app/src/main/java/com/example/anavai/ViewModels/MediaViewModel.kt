@@ -3,7 +3,7 @@ package com.example.anavai.ViewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.anavai.Models.Media
+import com.example.anavai.models.Media
 import com.example.anavai.Repositories.MediaRepository
 
 

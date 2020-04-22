@@ -2,24 +2,20 @@ package com.example.anavai.Adapters
 
 import android.content.Context
 import android.os.Bundle
-import android.provider.Contacts.SettingsColumns.KEY
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.FragmentNavigator
-import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.anavai.Models.Media
+import com.example.anavai.models.Media
 import com.example.anavai.R
 import kotlinx.android.synthetic.main.recycler_item_media.view.*
 

@@ -1,24 +1,17 @@
 package com.example.anavai.Fragments
 
-import android.app.Notification
-import android.app.NotificationManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RemoteViews
-import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.ViewPager2
 import com.example.anavai.Adapters.MediaInstanceRecyclerAdapter
-import com.example.anavai.Adapters.MediaViewpagerAdapter
-import com.example.anavai.Models.Media
-import com.example.anavai.Models.MediaInstance
+import com.example.anavai.models.MediaInstance
 import com.example.anavai.R
-import kotlinx.android.synthetic.main.fragment_share.*
 
 class ShareFragment : Fragment() {
 

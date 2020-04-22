@@ -1,4 +1,4 @@
-package com.example.anavai.Models
+package com.example.anavai.models
 
 class Comment(val image: String) {
 }

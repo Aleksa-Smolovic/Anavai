@@ -5,24 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
-import androidx.core.content.ContextCompat
-import androidx.fragment.app.FragmentManager
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.anavai.Fragments.SingleMediaFragment
-import com.example.anavai.Models.MediaInstance
+import com.example.anavai.models.MediaInstance
 import com.example.anavai.R
-import kotlinx.android.synthetic.main.recycler_item_media.view.*
 import kotlinx.android.synthetic.main.recycler_item_media_instance.view.*
 
 
 class MediaInstanceRecyclerAdapter(
-    private val mediaInstanceList: ArrayList<MediaInstance>,
+    private val mediaInstanceList: List<MediaInstance>,
     private val context: Context
 ) : RecyclerView.Adapter<MediaInstanceRecyclerAdapter.ViewHolder>() {
 
