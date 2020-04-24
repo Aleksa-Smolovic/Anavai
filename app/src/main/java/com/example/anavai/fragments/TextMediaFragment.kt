@@ -1,4 +1,4 @@
-package com.example.anavai.Fragments
+package com.example.anavai.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater

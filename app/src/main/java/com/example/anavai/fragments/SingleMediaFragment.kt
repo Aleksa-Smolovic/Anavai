@@ -1,11 +1,10 @@
-package com.example.anavai.Fragments
+package com.example.anavai.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
@@ -14,9 +13,10 @@ import com.example.anavai.Adapters.MediaInstanceRecyclerAdapter
 import com.example.anavai.Adapters.MediaViewpagerAdapter
 import com.example.anavai.models.Media
 import com.example.anavai.R
-import com.example.anavai.ViewModels.MediaInstanceViewModel
-import com.example.anavai.ViewModels.MediaViewModel
+import com.example.anavai.viewModels.MediaInstanceViewModel
+import com.example.anavai.viewModels.MediaViewModel
 import com.google.android.material.appbar.CollapsingToolbarLayout
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class SingleMediaFragment : Fragment() {
@@ -46,7 +46,7 @@ class SingleMediaFragment : Fragment() {
 
 
     private fun initViewpager() {
-        val mediaViewModel = ViewModelProvider(this).get(MediaViewModel::class.java)
+        val mediaViewModel : MediaViewModel by viewModel()
         val mediaList:List<Media> = mediaViewModel.getMediaList().value!!
         mediaPager.adapter = MediaViewpagerAdapter(mediaList, requireContext())
         mediaPager.registerOnPageChangeCallback(object : OnPageChangeCallback() {
@@ -70,11 +70,11 @@ class SingleMediaFragment : Fragment() {
     }
 
     private fun initRecycler(){
-        val mediaInstanceModel = ViewModelProvider(this).get(MediaInstanceViewModel::class.java)
+        val mediaInstanceViewModel: MediaInstanceViewModel by viewModel()
         mediaInstanceRecycler.layoutManager =
             LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         mediaInstanceRecycler.adapter =
-            MediaInstanceRecyclerAdapter(mediaInstanceModel.getMediaInstanceList().value!!, requireContext())
+            MediaInstanceRecyclerAdapter(mediaInstanceViewModel.getMediaInstanceList().value!!, requireContext())
         mediaInstanceRecycler.setBackgroundColor(resources.getColor(R.color.overlay_anime))
     }
 

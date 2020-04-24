@@ -1,4 +1,4 @@
-package com.example.anavai.Fragments
+package com.example.anavai.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,10 +10,21 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.anavai.Adapters.MediaInstanceRecyclerAdapter
-import com.example.anavai.models.MediaInstance
+import com.example.anavai.ApiService.ApiService
 import com.example.anavai.R
+import com.example.anavai.viewModels.MediaInstanceViewModel
+import com.example.anavai.viewModels.MediaViewModel
+import kotlinx.android.synthetic.main.fragment_share.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ShareFragment : Fragment() {
+
+    private lateinit var mediaInstanceRecycler: RecyclerView
+    private val mediaInstanceViewModel: MediaInstanceViewModel by viewModel()
+    private val mediaViewModel: MediaViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,7 +33,6 @@ class ShareFragment : Fragment() {
     ): View? {
         return inflater.inflate(R.layout.fragment_share, container, false)
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -42,25 +52,28 @@ class ShareFragment : Fragment() {
 //            notificationManager.notify(1, notification)
 //        }
 
-        val mediaInstanceList = ArrayList<MediaInstance>()
-        for (i in 0..10) {
-            mediaInstanceList.add(
-                MediaInstance(
-                    "Rick and Morty",
-                    1,
-                    "https://images4.alphacoders.com/102/thumb-1920-1028306.png",
-                    "https://images4.alphacoders.com/102/thumb-1920-1028306.png"
-                )
-            )
+        val apiService = ApiService()
+//        val mediaViewModel = ViewModelProvider(this).get(MediaViewModel::class.java)
+
+        search_btn.setOnClickListener {
+                        GlobalScope.launch(Dispatchers.Main) {
+//                            val response = apiService.getTest().await()
+//                            println("Ovo je response: $response")
+                            val response = mediaViewModel.getTest()
+                            println("Ovo je response: $response")
+            }
         }
 
-        val mediaInstanceRecycler =
-            view.findViewById<RecyclerView>(R.id.search_media_recycler)
+        mediaInstanceRecycler =
+            view.findViewById(R.id.search_media_recycler)
+        initRecycler()
+    }
+
+    private fun initRecycler(){
         mediaInstanceRecycler.layoutManager =
             LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         mediaInstanceRecycler.adapter =
-            MediaInstanceRecyclerAdapter(mediaInstanceList, requireContext())
-
+            MediaInstanceRecyclerAdapter(mediaInstanceViewModel.getMediaInstanceList().value!!, requireContext())
     }
 
 }

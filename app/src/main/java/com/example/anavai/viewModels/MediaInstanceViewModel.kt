@@ -1,16 +1,15 @@
-package com.example.anavai.ViewModels
+package com.example.anavai.viewModels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.anavai.models.MediaInstance
-import com.example.anavai.Repositories.MediaInstanceRepository
+import com.example.anavai.repositories.MediaInstanceRepository
 
 
-class MediaInstanceViewModel :ViewModel() {
+class MediaInstanceViewModel(private val repository: MediaInstanceRepository) :ViewModel() {
 
     private var mediaInstanceLiveData: MutableLiveData<List<MediaInstance>> = MutableLiveData()
-    private var repository:MediaInstanceRepository = MediaInstanceRepository
 
     public fun getMediaInstanceList(): LiveData<List<MediaInstance>>{
         return mediaInstanceLiveData

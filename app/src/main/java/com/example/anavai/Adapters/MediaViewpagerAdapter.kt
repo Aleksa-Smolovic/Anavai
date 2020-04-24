@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.anavai.models.Media
 import com.example.anavai.R
+import com.example.anavai.utils.loadImage
 
 class MediaViewpagerAdapter(private val mediaList: List<Media>, private val context: Context): RecyclerView.Adapter<MediaViewpagerAdapter.ViewHolder>() {
 
@@ -27,12 +28,8 @@ class MediaViewpagerAdapter(private val mediaList: List<Media>, private val cont
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val media = mediaList[position]
 
-        Glide.with(context)
-            .load(media.imageUrl)
-            .into(holder.image)
-
+        holder.image.loadImage(media.imageUrl)
         holder.overlay.setBackgroundColor(ContextCompat.getColor(context, media.overlayColor))
-
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){

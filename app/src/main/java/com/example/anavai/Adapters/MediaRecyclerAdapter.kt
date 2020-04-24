@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.anavai.models.Media
 import com.example.anavai.R
+import com.example.anavai.utils.loadImage
 import kotlinx.android.synthetic.main.recycler_item_media.view.*
 
 
@@ -35,9 +36,7 @@ class MediaRecyclerAdapter(private val mediaList: List<Media>, private val conte
         val media = mediaList[position]
 
         holder.name.text = media.name
-        Glide.with(context)
-            .load(media.imageUrl)
-            .into(holder.image)
+        holder.image.loadImage(media.imageUrl)
 
         holder.overlay.setBackgroundColor(ContextCompat.getColor(context, media.overlayColor))
         ViewCompat.setTransitionName(holder.image, "Test_$position")

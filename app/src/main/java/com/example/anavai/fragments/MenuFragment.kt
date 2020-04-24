@@ -1,4 +1,4 @@
-package com.example.anavai.Fragments
+package com.example.anavai.fragments
 
 import android.animation.Animator
 import android.os.Bundle
@@ -9,13 +9,13 @@ import android.view.ViewAnimationUtils
 import android.view.ViewGroup
 import androidx.core.animation.doOnEnd
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.anavai.Adapters.MediaRecyclerAdapter
 import com.example.anavai.R
-import com.example.anavai.ViewModels.MediaViewModel
+import com.example.anavai.viewModels.MediaViewModel
 import kotlinx.android.synthetic.main.fragment_menu.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.math.hypot
 
 class MenuFragment : Fragment() {
@@ -42,7 +42,7 @@ class MenuFragment : Fragment() {
     }
 
     private fun recyclerInit(){
-        mediaViewModel = ViewModelProvider(this).get(MediaViewModel::class.java)
+        val mediaViewModel : MediaViewModel by viewModel()
         mediaRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         //TODO zasto je !!
         mediaRecycler.adapter = MediaRecyclerAdapter(mediaViewModel.getMediaList().value!!, requireContext())

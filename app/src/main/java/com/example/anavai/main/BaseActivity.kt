@@ -1,4 +1,4 @@
-package com.example.anavai.Activities
+package com.example.anavai.main
 
 import android.os.Bundle
 import android.view.View
@@ -8,9 +8,9 @@ import androidx.fragment.app.FragmentManager
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.anavai.Fragments.MenuFragment
-import com.example.anavai.Fragments.ProfileFragment
-import com.example.anavai.Fragments.ShareFragment
+import com.example.anavai.fragments.MenuFragment
+import com.example.anavai.fragments.ProfileFragment
+import com.example.anavai.fragments.ShareFragment
 import com.example.anavai.R
 import kotlinx.android.synthetic.main.activity_base.*
 

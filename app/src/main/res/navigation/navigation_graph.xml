@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/menuFragment"
-        android:name="com.example.anavai.Fragments.MenuFragment"
+        android:name="com.example.anavai.fragments.MenuFragment"
         android:label="MenuFragment" >
         <action
             android:id="@+id/navigate_Menu_to_SingleMedia"
@@ -15,15 +15,15 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.anavai.Fragments.ProfileFragment"
+        android:name="com.example.anavai.fragments.ProfileFragment"
         android:label="ProfileFragment" />
     <fragment
         android:id="@+id/shareFragment"
-        android:name="com.example.anavai.Fragments.ShareFragment"
+        android:name="com.example.anavai.fragments.ShareFragment"
         android:label="ShareFragment" />
     <fragment
         android:id="@+id/singleMediaFragment"
-        android:name="com.example.anavai.Fragments.SingleMediaFragment"
+        android:name="com.example.anavai.fragments.SingleMediaFragment"
         android:label="SingleMediaFragment" >
         <action
             android:id="@+id/navigate_singleMedia_to_MusicMedia"
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.example.anavai.Fragments.SplashFragment"
+        android:name="com.example.anavai.fragments.SplashFragment"
         android:label="SplashFragment" >
         <action
             android:id="@+id/navigate_Splash_to_Auth"
@@ -44,7 +44,7 @@
     </fragment>
     <fragment
         android:id="@+id/authFragment"
-        android:name="com.example.anavai.Fragments.AuthFragment"
+        android:name="com.example.anavai.fragments.AuthFragment"
         android:label="AuthFragment" >
         <action
             android:id="@+id/navigate_Auth_to_Menu"
@@ -57,17 +57,17 @@
     </fragment>
     <fragment
         android:id="@+id/musicMediaFragment"
-        android:name="com.example.anavai.Fragments.MusicMediaFragment"
+        android:name="com.example.anavai.fragments.MusicMediaFragment"
         android:label="fragment_music_media"
         tools:layout="@layout/fragment_music_media" />
     <fragment
         android:id="@+id/textMediaFragment"
-        android:name="com.example.anavai.Fragments.TextMediaFragment"
+        android:name="com.example.anavai.fragments.TextMediaFragment"
         android:label="fragment_text_media"
         tools:layout="@layout/fragment_text_media" />
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.example.anavai.Fragments.RegisterFragment"
+        android:name="com.example.anavai.fragments.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
         <action

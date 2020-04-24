@@ -30,7 +30,6 @@ class CommentRecyclerAdapter(private val commentList: ArrayList<Comment>, privat
             .load(comment.image)
             .apply(RequestOptions.circleCropTransform())
             .into(holder.image)
-
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){

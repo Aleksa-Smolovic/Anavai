@@ -1,9 +1,10 @@
-package com.example.anavai.Repositories
+package com.example.anavai.repositories
 
 import androidx.lifecycle.MutableLiveData
+import com.example.anavai.ApiService.ApiService
 import com.example.anavai.models.MediaInstance
 
-object MediaInstanceRepository{
+class MediaInstanceRepository(private val apiService: ApiService){
 
     private var mediaInstanceList = ArrayList<MediaInstance>()
 

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.anavai.models.MediaInstance
 import com.example.anavai.R
+import com.example.anavai.utils.loadImage
 import kotlinx.android.synthetic.main.recycler_item_media_instance.view.*
 
 
@@ -35,9 +36,7 @@ class MediaInstanceRecyclerAdapter(
 
         holder.title.text = mediaInstance.title
         holder.description.text = mediaInstance.description
-        Glide.with(context)
-            .load(mediaInstance.imageUrl)
-            .into(holder.image)
+        holder.image.loadImage(mediaInstance.imageUrl)
 
         holder.container.setOnClickListener {
 //            it.findNavController().navigate(R.id.navigate_singleMedia_to_MusicMedia)

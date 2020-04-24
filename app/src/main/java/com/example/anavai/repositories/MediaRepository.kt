@@ -1,14 +1,20 @@
-package com.example.anavai.Repositories
+package com.example.anavai.repositories
 
 import androidx.lifecycle.MutableLiveData
+import com.example.anavai.ApiService.ApiService
 import com.example.anavai.models.Media
 import com.example.anavai.R
+import com.example.anavai.models.TestResponse
 
-object MediaRepository {
+class MediaRepository(private val apiService: ApiService) {
 
     private var mediaList = ArrayList<Media>()
 
-    public fun getMediaList(): MutableLiveData<List<Media>>{
+    suspend fun getTest():List<TestResponse>{
+       return apiService.getTest().await()
+    }
+
+    fun getMediaList(): MutableLiveData<List<Media>>{
         populateMediaList()
         val data:MutableLiveData<List<Media>> = MutableLiveData()
         data.value = mediaList

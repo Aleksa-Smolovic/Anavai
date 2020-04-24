@@ -1,4 +1,4 @@
-package com.example.anavai.Fragments
+package com.example.anavai.fragments
 
 import android.animation.Animator
 import android.os.Bundle
