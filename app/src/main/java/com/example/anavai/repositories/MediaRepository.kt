@@ -1,7 +1,7 @@
 package com.example.anavai.repositories
 
 import androidx.lifecycle.MutableLiveData
-import com.example.anavai.ApiService.ApiService
+import com.example.anavai.api_service.ApiService
 import com.example.anavai.models.Media
 import com.example.anavai.R
 import com.example.anavai.models.TestResponse

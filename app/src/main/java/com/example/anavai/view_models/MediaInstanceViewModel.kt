@@ -1,4 +1,4 @@
-package com.example.anavai.viewModels
+package com.example.anavai.view_models
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

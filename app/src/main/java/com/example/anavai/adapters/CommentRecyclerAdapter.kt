@@ -1,4 +1,4 @@
-package com.example.anavai.Adapters
+package com.example.anavai.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -12,7 +12,7 @@ import com.example.anavai.models.Comment
 import com.example.anavai.R
 
 
-class CommentRecyclerAdapter(private val commentList: ArrayList<Comment>, private val context: Context) : RecyclerView.Adapter<CommentRecyclerAdapter.ViewHolder>(){
+class CommentRecyclerAdapter(private val commentList: List<Comment>, private val context: Context) : RecyclerView.Adapter<CommentRecyclerAdapter.ViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.recycler_item_comment, parent, false)

@@ -139,6 +139,7 @@
 
     <ScrollView
         android:visibility="gone"
+        android:elevation="5dp"
         android:id="@+id/text_holder"
         android:layout_width="match_parent"
         android:layout_height="1000dp"

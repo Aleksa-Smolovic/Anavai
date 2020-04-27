@@ -9,12 +9,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
-import com.example.anavai.Adapters.MediaInstanceRecyclerAdapter
-import com.example.anavai.Adapters.MediaViewpagerAdapter
+import com.example.anavai.adapters.MediaInstanceRecyclerAdapter
+import com.example.anavai.adapters.MediaViewpagerAdapter
 import com.example.anavai.models.Media
 import com.example.anavai.R
-import com.example.anavai.viewModels.MediaInstanceViewModel
-import com.example.anavai.viewModels.MediaViewModel
+import com.example.anavai.view_models.MediaInstanceViewModel
+import com.example.anavai.view_models.MediaViewModel
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

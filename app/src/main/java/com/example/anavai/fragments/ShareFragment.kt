@@ -9,11 +9,11 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.anavai.Adapters.MediaInstanceRecyclerAdapter
-import com.example.anavai.ApiService.ApiService
+import com.example.anavai.adapters.MediaInstanceRecyclerAdapter
+import com.example.anavai.api_service.ApiService
 import com.example.anavai.R
-import com.example.anavai.viewModels.MediaInstanceViewModel
-import com.example.anavai.viewModels.MediaViewModel
+import com.example.anavai.view_models.MediaInstanceViewModel
+import com.example.anavai.view_models.MediaViewModel
 import kotlinx.android.synthetic.main.fragment_share.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope

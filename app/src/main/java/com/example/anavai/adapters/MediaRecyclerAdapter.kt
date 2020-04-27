@@ -1,4 +1,4 @@
-package com.example.anavai.Adapters
+package com.example.anavai.adapters
 
 import android.content.Context
 import android.os.Bundle
@@ -14,7 +14,6 @@ import androidx.core.view.ViewCompat
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.FragmentNavigator
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.anavai.models.Media
 import com.example.anavai.R
 import com.example.anavai.utils.loadImage

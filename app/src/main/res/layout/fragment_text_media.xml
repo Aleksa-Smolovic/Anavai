@@ -139,9 +139,9 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
+        android:visibility="gone"
         android:id="@+id/text_holder"
         android:layout_width="match_parent"
-        android:visibility="gone"
         android:layout_height="wrap_content"
         android:background="@color/turquoise"
         android:orientation="vertical"

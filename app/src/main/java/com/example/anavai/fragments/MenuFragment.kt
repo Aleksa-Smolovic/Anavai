@@ -11,9 +11,9 @@ import androidx.core.animation.doOnEnd
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.anavai.Adapters.MediaRecyclerAdapter
+import com.example.anavai.adapters.MediaRecyclerAdapter
 import com.example.anavai.R
-import com.example.anavai.viewModels.MediaViewModel
+import com.example.anavai.view_models.MediaViewModel
 import kotlinx.android.synthetic.main.fragment_menu.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.math.hypot

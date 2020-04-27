@@ -1,7 +1,7 @@
 package com.example.anavai.repositories
 
 import androidx.lifecycle.MutableLiveData
-import com.example.anavai.ApiService.ApiService
+import com.example.anavai.api_service.ApiService
 import com.example.anavai.models.MediaInstance
 
 class MediaInstanceRepository(private val apiService: ApiService){

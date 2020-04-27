@@ -35,16 +35,6 @@ class BaseActivity : AppCompatActivity() {
         }, true)
     }
 
-
-    private val destinationChangeListener = NavController.OnDestinationChangedListener{_, destination, _ ->
-        when(destination.id){
-            R.id.menuFragment -> showBottomNav()
-            R.id.shareFragment -> showBottomNav()
-            R.id.profileFragment -> showBottomNav()
-            else -> hideBottomNav()
-        }
-    }
-
     private fun showBottomNav() {
         bottom_navigation_view.visibility = View.VISIBLE
     }
