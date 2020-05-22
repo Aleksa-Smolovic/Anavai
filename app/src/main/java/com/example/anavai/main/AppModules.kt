@@ -2,11 +2,10 @@ package com.example.anavai.main
 
 import com.example.anavai.api_service.ApiService
 import com.example.anavai.repositories.CommentRepository
-import com.example.anavai.view_models.MediaInstanceViewModel
-import com.example.anavai.view_models.MediaViewModel
 import com.example.anavai.repositories.MediaInstanceRepository
 import com.example.anavai.repositories.MediaRepository
-import com.example.anavai.view_models.CommentViewModel
+import com.example.anavai.repositories.UserRepository
+import com.example.anavai.view_models.*
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -25,5 +24,9 @@ val appModules = module {
     factory { CommentRepository(get()) }
 
     viewModel { CommentViewModel(get()) }
+
+    factory { UserRepository(get()) }
+
+    viewModel { LoginViewModel(get()) }
 
 }

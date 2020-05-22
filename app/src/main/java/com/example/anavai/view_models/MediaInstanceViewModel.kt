@@ -11,7 +11,7 @@ class MediaInstanceViewModel(private val repository: MediaInstanceRepository) :V
 
     private var mediaInstanceLiveData: MutableLiveData<List<MediaInstance>> = MutableLiveData()
 
-    public fun getMediaInstanceList(): LiveData<List<MediaInstance>>{
+    fun getMediaInstanceList(): LiveData<List<MediaInstance>>{
         return mediaInstanceLiveData
     }
 

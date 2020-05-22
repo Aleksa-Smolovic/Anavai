@@ -8,7 +8,7 @@ import com.example.anavai.repositories.MediaRepository
 import com.example.anavai.models.TestResponse
 
 
-class MediaViewModel(private val repository: MediaRepository) :ViewModel() {
+class MediaViewModel (private val repository: MediaRepository) : ViewModel() {
 
     private var mediaLiveData: MutableLiveData<List<Media>> = MutableLiveData()
 

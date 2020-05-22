@@ -12,16 +12,23 @@ import android.view.animation.AnimationUtils
 import androidx.biometric.BiometricManager
 import androidx.core.animation.doOnEnd
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.anavai.R
+import com.example.anavai.databinding.FragmentAuthBinding
+import com.example.anavai.interfaces.LoginListener
+import com.example.anavai.utils.toast
+import com.example.anavai.view_models.LoginViewModel
 import kotlinx.android.synthetic.main.fragment_auth.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.math.hypot
 
 /**
  * A simple [Fragment] subclass.
  */
-class AuthFragment : Fragment() {
+class AuthFragment : Fragment(), LoginListener {
 
     lateinit var biometricManager: BiometricManager
 
@@ -29,8 +36,14 @@ class AuthFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_auth, container, false)
+        val loginViewModel: LoginViewModel by viewModel()
+//        using databinding with viewmodel
+        val binding: FragmentAuthBinding = FragmentAuthBinding.inflate(inflater, container, false)
+        loginViewModel.loginListener = this
+        binding.loginViewmodel = loginViewModel
+        return binding.root
+//        instead of this
+//        return inflater.inflate(R.layout.fragment_auth, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,21 +51,18 @@ class AuthFragment : Fragment() {
         biometricManager = BiometricManager.from(view.context)
         checkBiometricStatus(biometricManager)
 
-        log_in_btn.setOnClickListener {
-            log_in_btn.isEnabled = false
-            startAnimation()
-        }
-
-        no_acc.setOnClickListener{
+        no_acc.setOnClickListener {
             it.findNavController().navigate(R.id.navigate_Auth_to_Register)
         }
     }
 
     private fun startAnimation() {
-        val rotateLeft: Animation = AnimationUtils.loadAnimation(context,
+        val rotateLeft: Animation = AnimationUtils.loadAnimation(
+            context,
             R.anim.rotate_left
         )
-        val rotateRight: Animation = AnimationUtils.loadAnimation(context,
+        val rotateRight: Animation = AnimationUtils.loadAnimation(
+            context,
             R.anim.rotate_right
         )
 
@@ -89,6 +99,30 @@ class AuthFragment : Fragment() {
             BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE ->
                 System.out.println("Ne moze")
         }
+    }
+
+    override fun onStarted() {
+        log_in_btn.isEnabled = false
+        context?.toast("Started")
+        splash_animation.cancelAnimation()
+        splash_animation.visibility = View.GONE
+        splash_animation_error.visibility = View.GONE
+    }
+
+    override fun onSuccess(loginResponse: LiveData<String>) {
+        loginResponse.observe(this, Observer {
+            context?.toast(it)
+        })
+        splash_animation.visibility = View.VISIBLE
+        splash_animation.playAnimation()
+        startAnimation()
+    }
+
+    override fun onFailure(message: String) {
+        splash_animation_error.visibility = View.VISIBLE
+        splash_animation_error.playAnimation()
+        context?.toast(message)
+        log_in_btn.isEnabled = true
     }
 
 }

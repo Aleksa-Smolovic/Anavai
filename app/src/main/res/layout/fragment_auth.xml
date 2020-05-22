@@ -1,126 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_root"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/splash"
-    android:gravity="center"
-    android:orientation="vertical"
-    tools:context=".main.AuthActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/splash_animation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@id/back_rectangle"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/back_rectangle"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/ripple_red" />
+    <data>
+        <variable
+            name="login_viewmodel"
+            type="com.example.anavai.view_models.LoginViewModel" />
+    </data>
 
-    <LinearLayout
-        android:id="@+id/back_rectangle"
-        android:layout_width="170dp"
-        android:layout_height="170dp"
-        android:layout_marginTop="100dp"
-        android:background="@color/white"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:rotation="45"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <LinearLayout
-        android:id="@+id/front_rectangle"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:background="@color/splashColor"
-        android:orientation="vertical"
-        android:rotation="45"
-        app:layout_constraintBottom_toBottomOf="@id/back_rectangle"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/back_rectangle" />
-
-    <EditText
-        android:id="@+id/username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:background="@drawable/edit_text_pill"
-        android:hint="@string/short_placeholder"
-        android:paddingLeft="50dp"
-        android:paddingTop="8dp"
-        android:paddingRight="50dp"
-        android:paddingBottom="8dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        app:layout_constraintBottom_toTopOf="@id/password"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:background="@drawable/edit_text_pill"
-        android:inputType="textPassword"
-        android:paddingLeft="65dp"
-        android:paddingTop="8dp"
-        android:paddingRight="65dp"
-        android:paddingBottom="8dp"
-        android:text="@string/short_placeholder"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@id/log_in_btn"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <Button
-        android:id="@+id/log_in_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
-        android:background="@drawable/button_pill"
-        android:paddingLeft="70dp"
-        android:paddingRight="70dp"
-        android:text="@string/log_in"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/waiting_for_the_sunrise"
-        android:text="@string/no_acc"
-        android:textColor="@color/no_acc"
-        android:textSize="17sp"
-        android:id="@+id/no_acc"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/log_in_btn" />
-
-    <LinearLayout
-        android:id="@+id/cover_rectangle"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_root"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/splashColor"
-        android:elevation="5dp"
+        android:background="@color/splash"
+        android:gravity="center"
         android:orientation="vertical"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@id/front_rectangle"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/front_rectangle" />
+        tools:context=".main.AuthActivity">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/splash_animation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/back_rectangle"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/back_rectangle"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/ripple_red" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:visibility="gone"
+            android:id="@+id/splash_animation_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/back_rectangle"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/back_rectangle"
+            app:lottie_autoPlay="false"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/ripple_blue" />
+
+        <LinearLayout
+            android:id="@+id/back_rectangle"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:layout_marginTop="100dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:rotation="45"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:id="@+id/front_rectangle"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:background="@color/splashColor"
+            android:orientation="vertical"
+            android:rotation="45"
+            app:layout_constraintBottom_toBottomOf="@id/back_rectangle"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/back_rectangle" />
+
+        <EditText
+            android:text="@={login_viewmodel.email}"
+            android:id="@+id/email"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/edit_text_pill"
+            android:gravity="center"
+            android:hint="@string/email_edit_text"
+            android:inputType="textEmailAddress"
+            android:paddingLeft="25dp"
+            android:paddingTop="8dp"
+            android:paddingRight="25dp"
+            android:paddingBottom="8dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/password"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <EditText
+            android:text="@={login_viewmodel.password}"
+            android:id="@+id/password"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/edit_text_pill"
+            android:gravity="center"
+            android:hint="@string/password_edit_text"
+            android:inputType="textPassword"
+            android:paddingLeft="25dp"
+            android:paddingTop="8dp"
+            android:paddingRight="25dp"
+            android:paddingBottom="8dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/log_in_btn"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <Button
+            android:onClick="@{login_viewmodel::attemptLogin}"
+            android:id="@+id/log_in_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="60dp"
+            android:background="@drawable/button_pill"
+            android:paddingLeft="70dp"
+            android:paddingRight="70dp"
+            android:text="@string/log_in"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <TextView
+            android:id="@+id/no_acc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/waiting_for_the_sunrise"
+            android:text="@string/no_acc"
+            android:textColor="@color/no_acc"
+            android:textSize="17sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/log_in_btn" />
+
+        <LinearLayout
+            android:id="@+id/cover_rectangle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/splashColor"
+            android:elevation="5dp"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@id/front_rectangle"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/front_rectangle" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
+
