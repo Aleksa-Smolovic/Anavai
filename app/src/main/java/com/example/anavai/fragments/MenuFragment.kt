@@ -11,25 +11,28 @@ import androidx.core.animation.doOnEnd
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.anavai.adapters.MediaRecyclerAdapter
+import com.example.anavai.adapters.CategoryRecyclerAdapter
 import com.example.anavai.R
+import com.example.anavai.view_models.CategoryViewModel
 import com.example.anavai.view_models.MediaViewModel
 import kotlinx.android.synthetic.main.fragment_menu.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.math.hypot
 
 class MenuFragment : Fragment() {
 
-    private lateinit var mediaViewModel: MediaViewModel
-    private lateinit var mediaRecycler: RecyclerView
+    lateinit var categoryRecyclerView: RecyclerView
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_menu, container, false)
-        mediaRecycler = rootView.findViewById(R.id.media_recycler) as RecyclerView
+        categoryRecyclerView = rootView.findViewById(R.id.category_recycler)
         recyclerInit()
         return rootView
     }
@@ -41,11 +44,13 @@ class MenuFragment : Fragment() {
         }, 500)
     }
 
-    private fun recyclerInit(){
-        val mediaViewModel : MediaViewModel by viewModel()
-        mediaRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-        //TODO zasto je !!
-        mediaRecycler.adapter = MediaRecyclerAdapter(mediaViewModel.getMediaList().value!!, requireContext())
+    private fun recyclerInit() {
+        val categoryViewModel: CategoryViewModel by viewModel()
+        categoryRecyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        GlobalScope.launch(Dispatchers.Main) {
+            categoryRecyclerView.adapter =
+                CategoryRecyclerAdapter(categoryViewModel.getCategories().value!!, requireContext())
+        }
     }
 
     private fun removeCover() {

@@ -14,33 +14,37 @@ import androidx.core.view.ViewCompat
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.FragmentNavigator
 import androidx.recyclerview.widget.RecyclerView
-import com.example.anavai.models.Media
 import com.example.anavai.R
+import com.example.anavai.models.Category
 import com.example.anavai.utils.loadImage
 import kotlinx.android.synthetic.main.recycler_item_media.view.*
 
 
-class MediaRecyclerAdapter(private val mediaList: List<Media>, private val context: Context) : RecyclerView.Adapter<MediaRecyclerAdapter.ViewHolder>(){
+class CategoryRecyclerAdapter(
+    private val categories: List<Category>,
+    private val context: Context
+) : RecyclerView.Adapter<CategoryRecyclerAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.recycler_item_media, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.recycler_item_media, parent, false)
         return ViewHolder(view)
     }
 
     override fun getItemCount(): Int {
-        return mediaList.size
+        return categories.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val media = mediaList[position]
+        val category = categories[position]
 
-        holder.name.text = media.name
-        holder.image.loadImage(media.imageUrl)
+        holder.name.text = category.name
+        holder.image.loadImage(category.image)
 
-        holder.overlay.setBackgroundColor(ContextCompat.getColor(context, media.overlayColor))
+        holder.overlay.setBackgroundColor(ContextCompat.getColor(context, category.overlay!!))
         ViewCompat.setTransitionName(holder.image, "Test_$position")
 
-        holder.container.setOnClickListener{
+        holder.container.setOnClickListener {
             val bundle = Bundle().apply {
                 putInt("position", position)
             }
@@ -52,7 +56,7 @@ class MediaRecyclerAdapter(private val mediaList: List<Media>, private val conte
 
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val name = itemView.findViewById(R.id.media_name) as TextView
         val image = itemView.findViewById(R.id.media_image) as ImageView
         val overlay = itemView.findViewById(R.id.media_overlay) as LinearLayout

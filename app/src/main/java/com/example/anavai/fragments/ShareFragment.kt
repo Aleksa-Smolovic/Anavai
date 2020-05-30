@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.anavai.adapters.MediaInstanceRecyclerAdapter
-import com.example.anavai.api_service.ApiService
 import com.example.anavai.R
 import com.example.anavai.view_models.MediaInstanceViewModel
 import com.example.anavai.view_models.MediaViewModel
@@ -52,7 +51,6 @@ class ShareFragment : Fragment() {
 //            notificationManager.notify(1, notification)
 //        }
 
-        val apiService = ApiService()
 //        val mediaViewModel = ViewModelProvider(this).get(MediaViewModel::class.java)
 
         search_btn.setOnClickListener {
