@@ -16,8 +16,10 @@ import androidx.navigation.fragment.FragmentNavigator
 import androidx.recyclerview.widget.RecyclerView
 import com.example.anavai.R
 import com.example.anavai.models.Category
+import com.example.anavai.models.overlays
 import com.example.anavai.utils.loadImage
 import kotlinx.android.synthetic.main.recycler_item_media.view.*
+import kotlin.random.Random
 
 
 class CategoryRecyclerAdapter(
@@ -41,7 +43,7 @@ class CategoryRecyclerAdapter(
         holder.name.text = category.name
         holder.image.loadImage(category.image)
 
-        holder.overlay.setBackgroundColor(ContextCompat.getColor(context, category.overlay!!))
+        holder.overlay.setBackgroundColor(ContextCompat.getColor(context, overlays[Random.nextInt(0, 5)]))
         ViewCompat.setTransitionName(holder.image, "Test_$position")
 
         holder.container.setOnClickListener {

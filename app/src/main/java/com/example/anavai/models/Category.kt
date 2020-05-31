@@ -12,10 +12,6 @@ val overlays: IntArray = intArrayOf(
     R.color.overlay_anime
 )
 
-class Category(val id: Long, val name: String, val image: String, var overlay: Int?) {
-
-    init {
-        this.overlay = overlays[Random.nextInt(0, 5)]
-    }
+class Category(val id: Long, val name: String, val image: String) {
 
 }

@@ -1,6 +1,5 @@
 package com.example.anavai.main
 
-import com.example.anavai.BuildConfig
 import com.example.anavai.api_service.ApiService
 import com.example.anavai.api_service.AuthInterceptor
 import com.example.anavai.repositories.*
@@ -14,7 +13,7 @@ import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-const val BASE_URL = "http://192.168.1.69/api/"
+const val BASE_URL = "http://192.168.1.70/api/"
 
 val appModules = module {
 
