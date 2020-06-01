@@ -11,7 +11,6 @@ class CategoryViewModel(private val categoryRepository: CategoryRepository) : Vi
     private var categoryLiveData: MutableLiveData<List<Category>> = MutableLiveData()
 
     suspend fun getCategories(): LiveData<List<Category>> {
-        System.out.println("Uslo 05")
         categoryLiveData = categoryRepository.getCategories()
         return categoryLiveData
     }

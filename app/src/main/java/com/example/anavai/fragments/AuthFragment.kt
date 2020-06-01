@@ -30,8 +30,6 @@ import kotlin.math.hypot
  */
 class AuthFragment : Fragment(), LoginListener {
 
-    lateinit var biometricManager: BiometricManager
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,8 +46,6 @@ class AuthFragment : Fragment(), LoginListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        biometricManager = BiometricManager.from(view.context)
-        checkBiometricStatus(biometricManager)
 
         no_acc.setOnClickListener {
             it.findNavController().navigate(R.id.navigate_Auth_to_Register)
@@ -90,15 +86,6 @@ class AuthFragment : Fragment(), LoginListener {
                 findNavController().navigate(R.id.navigate_Auth_to_Menu)
             }
         }, 2000)
-    }
-
-    private fun checkBiometricStatus(biometricManager: BiometricManager) {
-        when (biometricManager.canAuthenticate()) {
-            BiometricManager.BIOMETRIC_SUCCESS ->
-                System.out.println("Moze")
-            BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE ->
-                System.out.println("Ne moze")
-        }
     }
 
     override fun onStarted() {

@@ -5,25 +5,31 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.example.anavai.adapters.MediaInstanceRecyclerAdapter
-import com.example.anavai.adapters.MediaViewpagerAdapter
-import com.example.anavai.models.Media
+import com.example.anavai.adapters.CategoryViewpagerAdapter
 import com.example.anavai.R
+import com.example.anavai.models.Category
+import com.example.anavai.utils.toast
+import com.example.anavai.view_models.CategoryViewModel
 import com.example.anavai.view_models.MediaInstanceViewModel
-import com.example.anavai.view_models.MediaViewModel
 import com.google.android.material.appbar.CollapsingToolbarLayout
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class SingleMediaFragment : Fragment() {
 
-    private lateinit var mediaPager: ViewPager2
+    private lateinit var categoryPager: ViewPager2
     private lateinit var collapsingToolbarLayout: CollapsingToolbarLayout
     private lateinit var mediaInstanceRecycler: RecyclerView
+    val args: SingleMediaFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,7 +38,7 @@ class SingleMediaFragment : Fragment() {
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_single_media, container, false)
 
-        mediaPager = rootView.findViewById(R.id.media_pager) as ViewPager2
+        categoryPager = rootView.findViewById(R.id.media_pager) as ViewPager2
         mediaInstanceRecycler =
             rootView.findViewById(R.id.media_instance_recycler)
         collapsingToolbarLayout =
@@ -40,41 +46,47 @@ class SingleMediaFragment : Fragment() {
 
         initViewpager()
         initRecycler()
-
         return rootView
     }
 
-
     private fun initViewpager() {
-        val mediaViewModel : MediaViewModel by viewModel()
-        val mediaList:List<Media> = mediaViewModel.getMediaList().value!!
-        mediaPager.adapter = MediaViewpagerAdapter(mediaList, requireContext())
-        mediaPager.registerOnPageChangeCallback(object : OnPageChangeCallback() {
-            override fun onPageScrolled(
-                position: Int,
-                positionOffset: Float,
-                positionOffsetPixels: Int
-            ) {
-                collapsingToolbarLayout.title = mediaList[position].name
-                super.onPageScrolled(position, positionOffset, positionOffsetPixels)
-            }
+        val categoryViewModel: CategoryViewModel by viewModel()
+        var categories: List<Category>
+        GlobalScope.launch(Dispatchers.Main) {
+            categories = categoryViewModel.getCategories().value!!
+            categoryPager.adapter = CategoryViewpagerAdapter(categories, requireContext())
+            categoryPager.registerOnPageChangeCallback(object : OnPageChangeCallback() {
+                override fun onPageScrolled(
+                    position: Int,
+                    positionOffset: Float,
+                    positionOffsetPixels: Int
+                ) {
+                    collapsingToolbarLayout.title = categories[position].name
+                    super.onPageScrolled(position, positionOffset, positionOffsetPixels)
+                }
 
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-            }
+                override fun onPageSelected(position: Int) {
+                    super.onPageSelected(position)
+                }
 
-            override fun onPageScrollStateChanged(state: Int) {
-                super.onPageScrollStateChanged(state)
-            }
-        })
+                override fun onPageScrollStateChanged(state: Int) {
+                    super.onPageScrollStateChanged(state)
+                }
+            })
+            categoryPager.currentItem = args.categoryPosition
+        }
+
     }
 
-    private fun initRecycler(){
+    private fun initRecycler() {
         val mediaInstanceViewModel: MediaInstanceViewModel by viewModel()
         mediaInstanceRecycler.layoutManager =
             LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         mediaInstanceRecycler.adapter =
-            MediaInstanceRecyclerAdapter(mediaInstanceViewModel.getMediaInstanceList().value!!, requireContext())
+            MediaInstanceRecyclerAdapter(
+                mediaInstanceViewModel.getMediaInstanceList().value!!,
+                requireContext()
+            )
         mediaInstanceRecycler.setBackgroundColor(resources.getColor(R.color.overlay_anime))
     }
 

@@ -8,11 +8,13 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.example.anavai.models.Media
 import com.example.anavai.R
+import com.example.anavai.models.Category
+import com.example.anavai.models.overlays
 import com.example.anavai.utils.loadImage
+import kotlin.random.Random
 
-class MediaViewpagerAdapter(private val mediaList: List<Media>, private val context: Context): RecyclerView.Adapter<MediaViewpagerAdapter.ViewHolder>() {
+class CategoryViewpagerAdapter(private val categories: List<Category>, private val context: Context): RecyclerView.Adapter<CategoryViewpagerAdapter.ViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -21,14 +23,14 @@ class MediaViewpagerAdapter(private val mediaList: List<Media>, private val cont
     }
 
     override fun getItemCount(): Int {
-        return mediaList.size
+        return categories.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val media = mediaList[position]
+        val media = categories[position]
 
-        holder.image.loadImage(media.imageUrl)
-        holder.overlay.setBackgroundColor(ContextCompat.getColor(context, media.overlayColor))
+        holder.image.loadImage(media.image)
+        holder.overlay.setBackgroundColor(ContextCompat.getColor(context, overlays[Random.nextInt(0, 5)]))
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){

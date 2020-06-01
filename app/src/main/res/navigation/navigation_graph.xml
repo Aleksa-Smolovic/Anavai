@@ -31,6 +31,10 @@
         <action
             android:id="@+id/navigate_SingleMedia_to_TextMedia"
             app:destination="@id/textMediaFragment" />
+        <argument
+            android:name="categoryPosition"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
     <fragment
         android:id="@+id/splashFragment"

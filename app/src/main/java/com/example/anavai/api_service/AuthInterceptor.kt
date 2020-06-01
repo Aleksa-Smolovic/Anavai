@@ -8,12 +8,13 @@ import okhttp3.Response
 class AuthInterceptor(private val preferences: PreferenceProvider) : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
-//        val request: Request = chain.request()
-
         var request = chain.request()
-        request = request.newBuilder()
-            .addHeader("Authorization", "Bearer " + preferences.getBearerToken()!!)
-            .build()
+
+        if (preferences.getBearerToken() != null) {
+            request = request.newBuilder()
+                .addHeader("Authorization", "Bearer " + preferences.getBearerToken()!!)
+                .build()
+        }
 
 //        val requestBuilder: Request.Builder = request.newBuilder()
 //        if (preferences.getBearerToken() != null)

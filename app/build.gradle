@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
     kotlinOptions {
         jvmTarget = "1.8"
@@ -35,8 +37,8 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta4'
+    implementation 'androidx.core:core-ktx:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta6'
 
     implementation 'com.airbnb.android:lottie:3.4.0'
     implementation 'androidx.biometric:biometric:1.0.1'
@@ -49,6 +51,10 @@ dependencies {
 //    def nav_version = "2.3.0-beta01"
 //    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
 //    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+//    navigation safe args
+//    def nav_version = "2.3.0-beta01"
+//    classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
 
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
 

@@ -11,14 +11,17 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
+import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.FragmentNavigator
 import androidx.recyclerview.widget.RecyclerView
 import com.example.anavai.R
+import com.example.anavai.fragments.MenuFragmentDirections
 import com.example.anavai.models.Category
 import com.example.anavai.models.overlays
 import com.example.anavai.utils.loadImage
 import kotlinx.android.synthetic.main.recycler_item_media.view.*
+import java.util.*
 import kotlin.random.Random
 
 
@@ -42,18 +45,11 @@ class CategoryRecyclerAdapter(
 
         holder.name.text = category.name
         holder.image.loadImage(category.image)
-
         holder.overlay.setBackgroundColor(ContextCompat.getColor(context, overlays[Random.nextInt(0, 5)]))
-        ViewCompat.setTransitionName(holder.image, "Test_$position")
 
         holder.container.setOnClickListener {
-            val bundle = Bundle().apply {
-                putInt("position", position)
-            }
-            val extras = FragmentNavigator.Extras.Builder()
-                .addSharedElement(holder.image, ViewCompat.getTransitionName(holder.image)!!)
-                .build()
-            it.findNavController().navigate(R.id.navigate_Menu_to_SingleMedia)
+            val action: NavDirections = MenuFragmentDirections.navigateMenuToSingleMedia(position)
+            it.findNavController().navigate(action)
         }
 
     }
