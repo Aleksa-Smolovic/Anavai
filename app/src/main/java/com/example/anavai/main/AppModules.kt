@@ -25,8 +25,6 @@ val appModules = module {
 
     factory { MediaInstanceRepository(get()) }
 
-    viewModel { MediaInstanceViewModel(get()) }
-
     factory { CommentRepository(get()) }
 
     viewModel { CommentViewModel(get()) }
@@ -38,6 +36,10 @@ val appModules = module {
     factory { CategoryRepository(get()) }
 
     viewModel { CategoryViewModel(get()) }
+
+    factory { MovieRepository(get()) }
+
+    viewModel { MovieViewModel(get()) }
 
 }
 

@@ -1,6 +1,7 @@
 package com.example.anavai.api_service
 
 import com.example.anavai.models.Category
+import com.example.anavai.models.Movie
 import com.example.anavai.models.TestResponse
 import kotlinx.coroutines.Deferred
 import okhttp3.ResponseBody
@@ -26,6 +27,9 @@ interface ApiService {
 
     @GET("categories")
     fun getCategories(): Deferred<List<Category>>
+
+    @GET("movies")
+    fun getAllMovies(): Deferred<List<Movie>>
 
 //    //companion object is static method
 //    companion object {

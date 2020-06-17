@@ -23,7 +23,7 @@
         android:label="ShareFragment" />
     <fragment
         android:id="@+id/singleMediaFragment"
-        android:name="com.example.anavai.fragments.SingleMediaFragment"
+        android:name="com.example.anavai.fragments.MoviesFragment"
         android:label="SingleMediaFragment" >
         <action
             android:id="@+id/navigate_singleMedia_to_MusicMedia"

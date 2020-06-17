@@ -1,6 +1,5 @@
 package com.example.anavai.adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,20 +8,19 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.anavai.models.MediaInstance
 import com.example.anavai.R
+import com.example.anavai.models.Movie
 import com.example.anavai.utils.loadImage
-import kotlinx.android.synthetic.main.recycler_item_media_instance.view.*
+import kotlinx.android.synthetic.main.recycler_item_movie.view.*
 
 
-class MediaInstanceRecyclerAdapter(
-    private val mediaInstanceList: List<MediaInstance>,
-    private val context: Context
-) : RecyclerView.Adapter<MediaInstanceRecyclerAdapter.ViewHolder>() {
+class MoviesRecyclerAdapter(
+    private val mediaInstanceList: List<Movie>
+) : RecyclerView.Adapter<MoviesRecyclerAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.recycler_item_media_instance, parent, false)
+            .inflate(R.layout.recycler_item_movie, parent, false)
         return ViewHolder(view)
     }
 
@@ -34,8 +32,8 @@ class MediaInstanceRecyclerAdapter(
         val mediaInstance = mediaInstanceList[position]
 
         holder.title.text = mediaInstance.title
-        holder.description.text = mediaInstance.description
-        holder.image.loadImage(mediaInstance.imageUrl)
+        holder.description.text = mediaInstance.text
+        holder.image.loadImage(mediaInstance.image)
 
         holder.container.setOnClickListener {
 //            it.findNavController().navigate(R.id.navigate_singleMedia_to_MusicMedia)

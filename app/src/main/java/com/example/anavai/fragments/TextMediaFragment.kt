@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ScrollView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,7 +12,6 @@ import com.example.anavai.adapters.CommentRecyclerAdapter
 import com.example.anavai.models.Comment
 import com.example.anavai.R
 import com.example.anavai.view_models.CommentViewModel
-import com.example.anavai.view_models.MediaInstanceViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
