@@ -11,11 +11,15 @@ class MovieRepository(
 
     private var movies: List<Movie>? = null
 
-    suspend fun getMovies(): MutableLiveData<List<Movie>> {
-        movies = apiService.getAllMovies().await()
+    suspend fun getMovies(categoryId: Long): MutableLiveData<List<Movie>> {
+        movies = apiService.getAllMovies(categoryId).await()
         val data: MutableLiveData<List<Movie>> = MutableLiveData()
         data.value = movies
         return data
+    }
+
+    suspend fun getMovie(movieId: Long): Movie{
+        return apiService.getMovie(movieId).await()
     }
 
 }

@@ -2,6 +2,7 @@ package com.example.anavai.main
 
 import com.example.anavai.api_service.ApiService
 import com.example.anavai.api_service.AuthInterceptor
+import com.example.anavai.api_service.ResponseErrorInterceptor
 import com.example.anavai.repositories.*
 import com.example.anavai.utils.PreferenceProvider
 import com.example.anavai.view_models.*
@@ -13,7 +14,8 @@ import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-const val BASE_URL = "http://192.168.1.70/api/"
+const val LOCAL_IP = "http://192.168.1.69/"
+const val BASE_URL = "${LOCAL_IP}api/"
 
 val appModules = module {
 
@@ -25,9 +27,9 @@ val appModules = module {
 
     factory { MediaInstanceRepository(get()) }
 
-    factory { CommentRepository(get()) }
+    factory { ReviewRepository(get()) }
 
-    viewModel { CommentViewModel(get()) }
+    viewModel { ReviewViewModel(get()) }
 
     factory { UserRepository(get(), get()) }
 
@@ -41,16 +43,30 @@ val appModules = module {
 
     viewModel { MovieViewModel(get()) }
 
+    factory { ActorRepository(get()) }
+
+    viewModel { ActorViewModel(get()) }
+
+    viewModel { UserViewModel(get()) }
+
+    factory { BlogRepository(get()) }
+
+    viewModel { BlogViewModel(get()) }
+
 }
 
 val networkModule = module {
     single { AuthInterceptor(get()) }
-    single { provideOkHttpClient(get()) }
+    single { ResponseErrorInterceptor() }
+    single { provideOkHttpClient(get(), get()) }
     single { provideRetrofit(get()) }
     single { provideApiService(get()) }
 }
 
-fun provideOkHttpClient(authInterceptor: AuthInterceptor): OkHttpClient {
+fun provideOkHttpClient(
+    authInterceptor: AuthInterceptor,
+    responseErrorInterceptor: ResponseErrorInterceptor
+): OkHttpClient {
     val httpLoggingInterceptor = HttpLoggingInterceptor()
     httpLoggingInterceptor.apply {
         httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
@@ -58,6 +74,7 @@ fun provideOkHttpClient(authInterceptor: AuthInterceptor): OkHttpClient {
 
     return OkHttpClient.Builder()
         .addInterceptor(authInterceptor)
+        .addInterceptor(responseErrorInterceptor)
         .addInterceptor(httpLoggingInterceptor)
         .build()
 }

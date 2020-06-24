@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <LinearLayout
@@ -39,6 +40,19 @@
             android:padding="15dp"
             android:textColor="@color/black"
             android:textColorHint="@android:color/darker_gray" />
+
+        <com.ramotion.fluidslider.FluidSlider
+            android:id="@+id/fluid_slider"
+            app:start_text="1"
+            app:end_text="5"
+            app:duration="5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-30dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="20dp"
+            app:size="small" />
 
         <Button
             android:id="@+id/submit_comment_btn"

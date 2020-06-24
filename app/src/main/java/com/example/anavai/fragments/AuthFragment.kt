@@ -44,14 +44,6 @@ class AuthFragment : Fragment(), LoginListener {
 //        return inflater.inflate(R.layout.fragment_auth, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        no_acc.setOnClickListener {
-            it.findNavController().navigate(R.id.navigate_Auth_to_Register)
-        }
-    }
-
     private fun startAnimation() {
         val rotateLeft: Animation = AnimationUtils.loadAnimation(
             context,
@@ -90,7 +82,7 @@ class AuthFragment : Fragment(), LoginListener {
 
     override fun onStarted() {
         log_in_btn.isEnabled = false
-        context?.toast("Started")
+//        context?.toast("Started")
         splash_animation.cancelAnimation()
         splash_animation.visibility = View.GONE
         splash_animation_error.visibility = View.GONE
@@ -98,11 +90,11 @@ class AuthFragment : Fragment(), LoginListener {
 
     override fun onSuccess(loginResponse: LiveData<String>) {
         loginResponse.observe(this, Observer {
-            context?.toast(it)
+//            context?.toast(it)
+            splash_animation.visibility = View.VISIBLE
+            splash_animation.playAnimation()
+            startAnimation()
         })
-        splash_animation.visibility = View.VISIBLE
-        splash_animation.playAnimation()
-        startAnimation()
     }
 
     override fun onFailure(message: String) {

@@ -10,7 +10,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.anavai.fragments.MenuFragment
 import com.example.anavai.fragments.ProfileFragment
-import com.example.anavai.fragments.ShareFragment
+import com.example.anavai.fragments.BlogFragment
 import com.example.anavai.R
 import kotlinx.android.synthetic.main.activity_base.*
 
@@ -27,7 +27,7 @@ class BaseActivity : AppCompatActivity() {
             override fun onFragmentViewCreated(fm: FragmentManager, f: Fragment, v: View, savedInstanceState: Bundle?) {
                 when(f){
                     is MenuFragment -> showBottomNav()
-                    is ShareFragment -> showBottomNav()
+                    is BlogFragment -> showBottomNav()
                     is ProfileFragment -> showBottomNav()
                     else -> hideBottomNav()
                 }

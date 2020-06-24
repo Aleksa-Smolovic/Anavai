@@ -20,10 +20,6 @@ class MediaViewModel (
         return mediaLiveData
     }
 
-    suspend fun getTest():List<TestResponse>{
-        return repository.getTest()
-    }
-
     init {
         mediaLiveData = repository.getMediaList()
     }

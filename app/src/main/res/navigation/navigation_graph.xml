@@ -16,10 +16,14 @@
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.anavai.fragments.ProfileFragment"
-        android:label="ProfileFragment" />
+        android:label="ProfileFragment" >
+        <action
+            android:id="@+id/navigate_ProfileFragment_to_AuthFragment"
+            app:destination="@id/authFragment" />
+    </fragment>
     <fragment
         android:id="@+id/shareFragment"
-        android:name="com.example.anavai.fragments.ShareFragment"
+        android:name="com.example.anavai.fragments.BlogFragment"
         android:label="ShareFragment" />
     <fragment
         android:id="@+id/singleMediaFragment"
@@ -32,9 +36,11 @@
             android:id="@+id/navigate_SingleMedia_to_TextMedia"
             app:destination="@id/textMediaFragment" />
         <argument
-            android:name="categoryPosition"
-            app:argType="integer"
-            android:defaultValue="0" />
+            android:name="categoryId"
+            app:argType="long" />
+        <argument
+            android:name="itemPosition"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
@@ -66,9 +72,19 @@
         tools:layout="@layout/fragment_music_media" />
     <fragment
         android:id="@+id/textMediaFragment"
-        android:name="com.example.anavai.fragments.TextMediaFragment"
+        android:name="com.example.anavai.fragments.SingleMovieFragment"
         android:label="fragment_text_media"
-        tools:layout="@layout/fragment_text_media" />
+        tools:layout="@layout/fragment_text_media" >
+        <argument
+            android:name="movieId"
+            app:argType="long" />
+        <action
+            android:id="@+id/singleMovieFragment_to_actorsFragment"
+            app:destination="@id/actorsFragment" />
+        <action
+            android:id="@+id/singleMovieFragment_to_reviewsFragment"
+            app:destination="@id/reviewsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.example.anavai.fragments.RegisterFragment"
@@ -77,5 +93,29 @@
         <action
             android:id="@+id/navigater_Register_to_Menu"
             app:destination="@id/menuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/actorsFragment"
+        android:name="com.example.anavai.fragments.ActorsFragment"
+        android:label="fragment_actors"
+        tools:layout="@layout/fragment_actors" >
+        <argument
+            android:name="movieId"
+            app:argType="long" />
+        <argument
+            android:name="movieTitle"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/reviewsFragment"
+        android:name="com.example.anavai.fragments.ReviewsFragment"
+        android:label="fragment_reviews"
+        tools:layout="@layout/fragment_reviews" >
+        <argument
+            android:name="movieId"
+            app:argType="long" />
+        <argument
+            android:name="movieTitle"
+            app:argType="string" />
     </fragment>
 </navigation>

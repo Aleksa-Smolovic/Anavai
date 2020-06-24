@@ -27,11 +27,12 @@
     <string name="register">Register</string>
     <string name="song">My Frequency feat. RebMoe</string>
     <string name="artist">Tiesto and 7 Skies</string>
-    <string name="rating">Your rating</string>
+    <string name="rating">Average rating</string>
     <string name="date">20/05/2020</string>
-    <string name="comment_rating">12 2102 ratings</string>
+    <string name="review_rating">Rating: 3/5</string>
     <string name="search">Search</string>
-    <string name="comment_placeholder">Wow... this is nice</string>
+    <string name="comment_placeholder">Wow… this is nice</string>
     <string name="submit">Submit</string>
     <string name="write_a_comment">Write a comment</string>
+    <string name="blog">BLOGS</string>
 </resources>

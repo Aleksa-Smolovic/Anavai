@@ -42,13 +42,11 @@ class CategoryRecyclerAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val category = categories[position]
-
         holder.name.text = category.name
         holder.image.loadImage(category.image)
         holder.overlay.setBackgroundColor(ContextCompat.getColor(context, overlays[Random.nextInt(0, 5)]))
-
         holder.container.setOnClickListener {
-            val action: NavDirections = MenuFragmentDirections.navigateMenuToSingleMedia(position)
+            val action: NavDirections = MenuFragmentDirections.navigateMenuToSingleMedia(category.id, position)
             it.findNavController().navigate(action)
         }
 

@@ -10,10 +10,6 @@ class MediaRepository(private val apiService: ApiService) {
 
     private var mediaList = ArrayList<Media>()
 
-    suspend fun getTest():List<TestResponse>{
-       return apiService.getTest().await()
-    }
-
     fun getMediaList(): MutableLiveData<List<Media>>{
         populateMediaList()
         val data:MutableLiveData<List<Media>> = MutableLiveData()

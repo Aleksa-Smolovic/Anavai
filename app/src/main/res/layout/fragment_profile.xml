@@ -1,92 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#7303c0"
-    android:orientation="vertical">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:alpha="0.6"
-        android:id="@+id/profile_background"
+    <data>
+        <variable
+            name="profile_viewmodel"
+            type="com.example.anavai.view_models.UserViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="210dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/pattern"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        android:background="#7303c0"
+        android:orientation="vertical">
 
-    </ImageView>
+        <ImageView
+            android:id="@+id/profile_background"
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            android:alpha="0.6"
+            android:scaleType="centerCrop"
+            android:src="@drawable/pattern"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/profile_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.2" />
+        </ImageView>
 
-    <ImageView
-        android:id="@+id/profile_image"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:src="@color/splash"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/profile_guideline" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/profile_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.2" />
 
-    <TextView
-        android:id="@+id/profile_full_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/courgette"
-        android:text="@string/short_placeholder"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/profile_image" />
+        <ImageView
+            android:id="@+id/profile_image"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@color/splash"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/profile_guideline" />
 
-    <TextView
-        android:id="@+id/profile_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:fontFamily="@font/architects_daughter"
-        android:text="@string/short_placeholder"
-        android:textSize="20sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/profile_full_name" />
+        <TextView
+            android:id="@+id/profile_full_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/courgette"
+            android:text="@string/short_placeholder"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profile_image" />
 
-    <TextView
-        android:id="@+id/profile_bio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="80dp"
-        android:fontFamily="@font/waiting_for_the_sunrise"
-        android:paddingLeft="50dp"
-        android:paddingRight="50dp"
-        android:text="@string/bio"
-        android:textAlignment="center"
-        android:textSize="23sp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@id/profile_login"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        <TextView
+            android:id="@+id/profile_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/architects_daughter"
+            android:text="@string/short_placeholder"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profile_full_name" />
 
-    <Button
-        android:id="@+id/btn_log_out"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="85dp"
-        android:background="@drawable/button_pill_second"
-        android:paddingLeft="80dp"
-        android:paddingRight="80dp"
-        android:text="@string/log_out"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        <TextView
+            android:id="@+id/profile_bio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="80dp"
+            android:fontFamily="@font/waiting_for_the_sunrise"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:text="@string/bio"
+            android:textAlignment="center"
+            android:textSize="23sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profile_email" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:onClick="@{profile_viewmodel::logout}"
+            android:id="@+id/log_out_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="85dp"
+            android:background="@drawable/button_pill_second"
+            android:paddingLeft="80dp"
+            android:paddingRight="80dp"
+            android:text="@string/log_out"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
+
